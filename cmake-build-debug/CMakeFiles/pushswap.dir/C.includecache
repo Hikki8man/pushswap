@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/jchevet/42projets/pushswap/libft/libft.h
+stdlib.h
+-
+unistd.h
+-
+fcntl.h
+-
+
+/Users/jchevet/42projets/pushswap/main.c
+push_swap.h
+/Users/jchevet/42projets/pushswap/push_swap.h
+
+/Users/jchevet/42projets/pushswap/push_swap.h
+libft/libft.h
+/Users/jchevet/42projets/pushswap/libft/libft.h
+stdio.h
+/Users/jchevet/42projets/pushswap/stdio.h
+
