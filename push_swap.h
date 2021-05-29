@@ -14,11 +14,10 @@ typedef struct	s_lst
 	struct s_lst	*next;
 }t_lst;
 
-typedef struct	s_struct
+typedef struct	s_data
 {
-	int		nb_elem;
-	t_lst	*a;
-	t_lst	*b;
-}t_struct;
+	int		a_size;
+	int 	b_size;
+}t_data;
 
 #endif //PUSHSWAP_PUSH_SWAP_H

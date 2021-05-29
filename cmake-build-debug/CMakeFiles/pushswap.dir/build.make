@@ -54,10 +54,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0009pdh002dlc/T/AppTranslocation/146B66DB-DACA-4C3B-97DE-2B14600D33E8/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0009pdh002dlc/T/AppTranslocation/A9666D07-8ADE-41F4-9BD4-60FCD50420AC/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0009pdh002dlc/T/AppTranslocation/146B66DB-DACA-4C3B-97DE-2B14600D33E8/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0009pdh002dlc/T/AppTranslocation/A9666D07-8ADE-41F4-9BD4-60FCD50420AC/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
