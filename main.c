@@ -3,18 +3,18 @@
 //
 #include "push_swap.h"
 
-void printlst(t_data *data, t_lst *lst, int nb_elem)
+void printlst(t_data *data, t_lst *lst, char c)
 {
 	int i;
 	t_lst *tmp;
 	i = 0;
 
 	tmp = lst;
-	while (i < nb_elem)
+	printf("List %c\n", c);
+	while (tmp)
 	{
 		printf("nb = %d\n", tmp->nb);
 		tmp = tmp->next;
-		i++;
 	}
 	printf("\n");
 }
@@ -29,7 +29,12 @@ int	skip_space(char *s)
 	return (i);
 }
 
-
+int is_empty(t_lst **lst)
+{
+	if (!*lst)
+		return (1);
+	return (0);
+}
 
 static t_lst	*lstlast(t_lst *lst)
 {
@@ -80,19 +85,16 @@ void swap(t_lst *lst)
 	}
 }
 
-void push(t_data *data, t_lst *a, t_lst *b)
+void push(t_data *data, t_lst **a, t_lst **b)
 {
 	t_lst *tmp;
 
-	tmp = a;
-	a = a->next;
-	b = tmp;
-	data->a_size--;
-	data->b_size++;
-	printlst(data, a, data->a_size);
-	printlst(data, b, data->b_size);
-
-
+	if (is_empty(a))
+		return;
+	tmp = (*a);
+	(*a) = (*a)->next;
+	tmp->next =(*b);
+	(*b) = tmp;
 }
 
 
@@ -109,21 +111,72 @@ int intlen(int nb)
 	return (i);
 }
 
-t_lst *split_to_list(t_data *data, char *str)
+void	split_to_list(t_data *data, char *str, t_lst **l)
 {
-	t_lst	*lst;
 	int nb;
+	t_lst *a;
 
-	lst = NULL;
 	while (*str)
 	{
 		str += skip_space(str);
 		nb = ft_atoi(str);
-		add_back(&lst, new_elem(nb));
+		add_back(&a, new_elem(nb));
 		str += intlen(nb);
 		data->a_size++;
 	}
-	return (lst);
+	*l = a;
+}
+
+int	lstsize(t_lst *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
+}
+
+static void	init_lst(t_lst *a, t_lst *b)
+{
+	a = NULL;
+	b = NULL;
+}
+
+void rotate(t_lst **lst)
+{
+	t_lst *first;
+	t_lst *tmp;
+
+	first = (*lst)->next;
+	tmp = lstlast(*lst);
+	tmp->next = *lst;
+	(*lst)->next = NULL;
+	*lst = first;
+}
+
+void rev_rotate(t_lst **lst)
+{
+	t_lst	*last;
+	t_lst	*tmp;
+	int size;
+	int	i;
+
+	i = 0;
+	size = lstsize(*lst);
+	last = lstlast(*lst);
+	last->next = *lst;
+	tmp = *lst;
+	while (i < size - 2)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	tmp->next = NULL;
+	*lst = last;
 }
 
 int main(int ac, char **av)
@@ -131,18 +184,23 @@ int main(int ac, char **av)
 	t_lst *a;
 	t_lst *b;
 
-	b = NULL;
 	t_data data;
 
-	data.a_size = 0;
-	data.b_size = 0;
+	init_lst(a, b);
 //	if (ac == 2)
 //	{
 		av[1] = "1 2 3 4 5 6";
-		a = split_to_list(&data, av[1]);
-		printlst(&data, a, data.a_size);
-		push(&data, a, b);
-		printlst(&data, a, data.a_size);
+		split_to_list(&data, av[1], &a);
+		printlst(&data, a, 'A');
+		printlst(&data, b, 'B');
+//		push(&data, &b, &a);
+//		swap(a);
+		rev_rotate(&a);
+		printlst(&data, a, 'A');
+		printlst(&data, b, 'B');
+	rev_rotate(&a);
+	printlst(&data, a, 'A');
+
 //	}
 //	printf("argumeeeeeent");
 	return (1);
