@@ -11,6 +11,7 @@
 typedef struct	s_lst
 {
 	int				nb;
+	struct s_lst	*prev;
 	struct s_lst	*next;
 }t_lst;
 

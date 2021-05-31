@@ -51,6 +51,7 @@ t_lst *new_elem(int nb)
 	if (elem == NULL)
 		exit (1);
 	elem->nb = nb;
+	elem->prev = NULL;
 	elem->next = NULL;
 	return (elem);
 }
@@ -64,6 +65,7 @@ static void	add_back(t_lst **lst, t_lst *new)
 	else
 	{
 		tmp = lstlast(*lst);
+		new->prev = tmp;
 		tmp->next = new;
 	}
 }
@@ -179,6 +181,16 @@ void rev_rotate(t_lst **lst)
 	*lst = last;
 }
 
+void insert_sort(t_lst **aa, t_lst **bb)
+{
+	t_lst *a;
+	t_lst *b;
+
+	a = *aa;
+	b = *bb;
+
+}
+
 int main(int ac, char **av)
 {
 	t_lst *a;
@@ -189,13 +201,12 @@ int main(int ac, char **av)
 	init_lst(a, b);
 //	if (ac == 2)
 //	{
-		av[1] = "1 2 3 4 5 6";
+		av[1] = "5 2 1 4 3 6";
 		split_to_list(&data, av[1], &a);
 		printlst(&data, a, 'A');
 		printlst(&data, b, 'B');
-//		push(&data, &b, &a);
-//		swap(a);
-		rev_rotate(&a);
+//		insert_sort(&a, &b);
+//		rev_rotate(&a);
 		printlst(&data, a, 'A');
 		printlst(&data, b, 'B');
 	rev_rotate(&a);
