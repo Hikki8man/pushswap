@@ -9,6 +9,7 @@ void printlst(t_data *data, t_lst *lst, char c)
 	t_lst *tmp;
 	i = 0;
 
+    printf("\n");
 	tmp = lst;
 	printf("List %c\n", c);
 	while (tmp)
@@ -75,7 +76,7 @@ static void add_front(t_lst **lst, t_lst *elem)
 	elem->next = *lst;
 	*lst = elem;
 }
-void swap(t_lst *lst)
+void swap(t_lst *lst, char c)
 {
 	int tmp;
 
@@ -85,9 +86,10 @@ void swap(t_lst *lst)
 		lst->next->nb = lst->nb;
 		lst->nb = tmp;
 	}
+	printf("s%c\n", c);
 }
 
-void push(t_data *data, t_lst **a, t_lst **b)
+void push(t_lst **a, t_lst **b, char c)
 {
 	t_lst *tmp;
 
@@ -95,8 +97,13 @@ void push(t_data *data, t_lst **a, t_lst **b)
 		return;
 	tmp = (*a);
 	(*a) = (*a)->next;
-	tmp->next =(*b);
-	(*b) = tmp;
+	if (*a)
+		(*a)->prev = NULL;
+	tmp->next = (*b);
+	if (*b)
+       (*b)->prev = tmp;
+    (*b) = tmp;
+    printf("p%c\n", c);
 }
 
 
@@ -110,10 +117,35 @@ int intlen(int nb)
 		nb /= 10;
 		i++;
 	}
+	printf("ok\n");
 	return (i);
 }
 
-void	split_to_list(t_data *data, char *str, t_lst **l)
+int str_int_cmp(char *s, int nb)
+{
+	int			len;
+	int			mod;
+	long long	num;
+	
+	len = ft_strlen(s);
+	printf("%d\n", len);
+	num = nb;
+	if (!ft_strncmp(s, "2147483648", 10))
+		return (-1);
+	if (nb < 0)
+		num *= -1;
+	while (len-- > 0)
+	{
+		mod = num % 10 + 48;
+		printf("s len %d\n", s[len]);
+		if (mod != (int)s[len])
+			return (-1);
+		num /= 10;
+	}
+	return (0);
+}
+
+void	str_to_list(char *str, t_lst **l)
 {
 	int nb;
 	t_lst *a;
@@ -124,7 +156,6 @@ void	split_to_list(t_data *data, char *str, t_lst **l)
 		nb = ft_atoi(str);
 		add_back(&a, new_elem(nb));
 		str += intlen(nb);
-		data->a_size++;
 	}
 	*l = a;
 }
@@ -148,19 +179,22 @@ static void	init_lst(t_lst *a, t_lst *b)
 	b = NULL;
 }
 
-void rotate(t_lst **lst)
+void rotate(t_lst **lst, char c)
 {
 	t_lst *first;
 	t_lst *tmp;
 
 	first = (*lst)->next;
+	first->prev = NULL;
 	tmp = lstlast(*lst);
 	tmp->next = *lst;
+    (*lst)->prev = tmp;
 	(*lst)->next = NULL;
 	*lst = first;
+	printf("r%c\n", c);
 }
 
-void rev_rotate(t_lst **lst)
+void rev_rotate(t_lst **lst, char c)
 {
 	t_lst	*last;
 	t_lst	*tmp;
@@ -170,7 +204,9 @@ void rev_rotate(t_lst **lst)
 	i = 0;
 	size = lstsize(*lst);
 	last = lstlast(*lst);
+	last->prev = NULL;
 	last->next = *lst;
+    (*lst)->prev = last;
 	tmp = *lst;
 	while (i < size - 2)
 	{
@@ -179,16 +215,112 @@ void rev_rotate(t_lst **lst)
 	}
 	tmp->next = NULL;
 	*lst = last;
+	printf("rr%c\n", c);
 }
 
-void insert_sort(t_lst **aa, t_lst **bb)
+void    sort3(t_lst **a)
 {
-	t_lst *a;
-	t_lst *b;
+    if ((*a)->nb > (*a)->next->nb && (*a)->next->nb < (*a)->next->next->nb && (*a)->nb < (*a)->next->next->nb)
+        swap(*a, 'a');
+    else if ((*a)->nb > (*a)->next->nb && (*a)->next->nb > (*a)->next->next->nb)
+    {
+        swap(*a, 'a');
+        rev_rotate(a, 'a');
+    }
+    else if ((*a)->nb > (*a)->next->nb && (*a)->next->nb < (*a)->next->next->nb)
+        rotate(a, 'a');
+    else if ((*a)->nb < (*a)->next->nb && (*a)->next->nb > (*a)->next->next->nb && (*a)->nb < (*a)->next->next->nb)
+    {
+        swap(*a, 'a');
+        rotate(a, 'a');
+    }
+    else if ((*a)->nb < (*a)->next->nb && (*a)->nb > (*a)->next->next->nb)
+        rev_rotate(a, 'a');
+}
 
-	a = *aa;
-	b = *bb;
+int find_smallest(t_lst **a)
+{
+    t_lst   *l;
+    int     i;
+    int     j;
+    int     tmp;
 
+    i = 1;
+    j = 1;
+    l = *a;
+    tmp = l->nb;
+    while (l)
+    {
+        if (l->nb < tmp)
+        {
+            tmp = l->nb;
+            j = i;
+        }
+        l = l->next;
+        i++;
+    }
+    return (j);
+}
+
+void push_smallest_to_b(t_lst **a, t_lst **b, int smallest_pos)
+{
+	int i;
+	
+	i = 1;
+	if (smallest_pos <= lstsize(*a) / 2 || (smallest_pos == 3 && lstsize(*a) == 5))
+		while (i < smallest_pos)
+		{
+			rotate(a, 'a');
+			i++;
+		}
+	else
+	{
+		while (smallest_pos <= lstsize(*a))
+		{
+			rev_rotate(a, 'a');
+			smallest_pos++;
+		}
+	}
+	push(a, b, 'b');
+}
+
+void sort5(t_lst **a, t_lst **b)
+{
+    push_smallest_to_b(a, b, find_smallest(a));
+	push_smallest_to_b(a, b, find_smallest(a));
+	sort3(a);
+	push(b, a, 'a');
+	push(b, a, 'a');
+}
+
+void freelst(t_lst **a, int err)
+{
+	t_lst *tmp;
+	while (*a)
+	{
+		tmp = (*a)->next;
+		free(*a);
+		(*a) = tmp;
+	}
+	if (err == 1)
+		ft_putstr_fd("Error\nWrong arguments\n", 2);
+	exit(1);
+}
+
+void tab_to_list(char **av, int ac, t_lst **a)
+{
+	int	i;
+	int nb;
+
+	i = 1;
+	while (i < ac)
+	{
+		nb = ft_atoi(av[i]);
+		if (str_int_cmp(av[i], nb) == -1)
+			freelst(a, 1);
+		add_back(a, new_elem(nb));
+		i++;
+	}
 }
 
 int main(int ac, char **av)
@@ -198,21 +330,25 @@ int main(int ac, char **av)
 
 	t_data data;
 
+	av[1] = "4";
+	av[2] = "2";
+	av[3] = "1";
+	av[4] = "3";
+	av[5] = "2147483647";
+	ac = 6;
 	init_lst(a, b);
-//	if (ac == 2)
-//	{
-		av[1] = "5 2 1 4 3 6";
-		split_to_list(&data, av[1], &a);
+	if (ac >= 2)
+	{
+		if (ac == 2)
+			str_to_list(av[1], &a);
+		else
+			tab_to_list(av, ac, &a);
 		printlst(&data, a, 'A');
-		printlst(&data, b, 'B');
-//		insert_sort(&a, &b);
-//		rev_rotate(&a);
-		printlst(&data, a, 'A');
-		printlst(&data, b, 'B');
-	rev_rotate(&a);
-	printlst(&data, a, 'A');
+        sort5(&a, &b);
+       printlst(&data, a, 'A');
+//        printlst(&data, b, 'B');
 
-//	}
-//	printf("argumeeeeeent");
+	}
+	printf("argumeeeeeent");
 	return (1);
 }

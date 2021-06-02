@@ -8,44 +8,44 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/jchevet/42projets/pushswap/cmake-build-debug"/>
+				<Option working_dir="/Users/jchevet/mygit/push_swap/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/jchevet/42projets/pushswap/cmake-build-debug"/>
+				<Option working_dir="/Users/jchevet/mygit/push_swap/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/jchevet/42projets/pushswap/cmake-build-debug"/>
+				<Option working_dir="/Users/jchevet/mygit/push_swap/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="pushswap">
-				<Option output="/Users/jchevet/42projets/pushswap/cmake-build-debug/pushswap" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/jchevet/42projets/pushswap/cmake-build-debug"/>
+				<Option output="/Users/jchevet/mygit/push_swap/cmake-build-debug/pushswap" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jchevet/mygit/push_swap/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/jchevet/42projets/pushswap/."/>
-					<Add directory="/Users/jchevet/42projets/pushswap/libft"/>
+					<Add directory="/Users/jchevet/mygit/push_swap/."/>
+					<Add directory="/Users/jchevet/mygit/push_swap/libft"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -53,21 +53,21 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 pushswap"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 pushswap"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="pushswap/fast">
-				<Option output="/Users/jchevet/42projets/pushswap/cmake-build-debug/pushswap" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/jchevet/42projets/pushswap/cmake-build-debug"/>
+				<Option output="/Users/jchevet/mygit/push_swap/cmake-build-debug/pushswap" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jchevet/mygit/push_swap/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/jchevet/42projets/pushswap/."/>
-					<Add directory="/Users/jchevet/42projets/pushswap/libft"/>
+					<Add directory="/Users/jchevet/mygit/push_swap/."/>
+					<Add directory="/Users/jchevet/mygit/push_swap/libft"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -75,179 +75,179 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 pushswap/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/42projets/pushswap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 pushswap/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jchevet/mygit/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_atoi.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_atoi.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_bzero.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_bzero.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_calloc.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_calloc.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_free_tab.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_free_tab.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_isalnum.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_isalnum.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_isalpha.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_isalpha.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_isascii.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_isascii.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_isdigit.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_isdigit.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_isprint.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_isprint.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_itoa.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_itoa.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_itoa_base.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_itoa_base.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_lstadd_back.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_lstadd_back.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_lstadd_front.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_lstadd_front.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_lstclear.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_lstclear.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_lstdelone.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_lstdelone.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_lstiter.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_lstiter.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_lstlast.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_lstlast.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_lstmap.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_lstmap.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_lstnew.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_lstnew.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_lstsize.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_lstsize.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_memccpy.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_memccpy.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_memchr.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_memchr.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_memcmp.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_memcmp.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_memcpy.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_memcpy.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_memmove.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_memmove.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_memset.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_memset.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_putchar.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_putchar.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_putchar_fd.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_putchar_fd.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_putendl_fd.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_putendl_fd.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_putnbr.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_putnbr.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_putnbr_fd.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_putnbr_fd.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_putstr.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_putstr.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_putstr_fd.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_putstr_fd.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_split.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_split.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_strchr.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_strchr.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_strdup.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_strdup.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_strjoin.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_strjoin.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_strlcat.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_strlcat.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_strlcpy.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_strlcpy.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_strlen.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_strlen.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_strmapi.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_strmapi.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_strncmp.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_strncmp.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_strnstr.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_strnstr.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_strrchr.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_strrchr.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_strtrim.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_strtrim.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_substr.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_substr.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_tolower.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_tolower.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_toupper.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_toupper.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_u_itoa.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_u_itoa.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_u_itoa_base.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_u_itoa_base.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/ft_ullitoa_base.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_ullitoa_base.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/get_next_line.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/get_next_line.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/libft/libft.h">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/libft.h">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/main.c">
+		<Unit filename="/Users/jchevet/mygit/push_swap/main.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/push_swap.h">
+		<Unit filename="/Users/jchevet/mygit/push_swap/push_swap.h">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/42projets/pushswap/CMakeLists.txt">
+		<Unit filename="/Users/jchevet/mygit/push_swap/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -6,5 +6,5 @@ C_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacO
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/jchevet/42projets/pushswap/. -I/Users/jchevet/42projets/pushswap/libft 
+C_INCLUDES = -I/Users/jchevet/mygit/push_swap/. -I/Users/jchevet/mygit/push_swap/libft 
 
