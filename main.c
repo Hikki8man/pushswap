@@ -128,7 +128,6 @@ int str_int_cmp(char *s, int nb)
 	long long	num;
 	
 	len = ft_strlen(s);
-	printf("%d\n", len);
 	num = nb;
 	if (!ft_strncmp(s, "2147483648", 10))
 		return (-1);
@@ -137,7 +136,6 @@ int str_int_cmp(char *s, int nb)
 	while (len-- > 0)
 	{
 		mod = num % 10 + 48;
-		printf("s len %d\n", s[len]);
 		if (mod != (int)s[len])
 			return (-1);
 		num /= 10;
@@ -173,10 +171,10 @@ int	lstsize(t_lst *lst)
 	return (i);
 }
 
-static void	init_lst(t_lst *a, t_lst *b)
+static void	init_lst(t_lst **a, t_lst **b)
 {
-	a = NULL;
-	b = NULL;
+	*a = NULL;
+	*b = NULL;
 }
 
 void rotate(t_lst **lst, char c)
@@ -304,6 +302,8 @@ void freelst(t_lst **a, int err)
 	}
 	if (err == 1)
 		ft_putstr_fd("Error\nWrong arguments\n", 2);
+	if (err == 2)
+		ft_putstr_fd("Error\nDuplicates numbers\n", 2);
 	exit(1);
 }
 
@@ -323,6 +323,52 @@ void tab_to_list(char **av, int ac, t_lst **a)
 	}
 }
 
+int check_duplicates(t_lst *a)
+{
+	int		tmp;
+	t_lst 	*l;
+
+	l = a;
+	while (l)
+	{
+		a = l;
+		tmp = a->nb;
+		a = a->next;
+		while (a)
+		{
+			if (tmp == a->nb)
+				return (1);
+			a = a->next;
+		}
+		l = l->next;
+	}
+	return (0);
+
+
+}
+
+int is_list_sorted(t_lst *a)
+{
+	int		tmp;
+	t_lst 	*l;
+
+	l = a;
+	while (l)
+	{
+		a = l;
+		tmp = a->nb;
+		a = a->next;
+		while (a)
+		{
+			if (tmp > a->nb)
+				return (0);
+			a = a->next;
+		}
+		l = l->next;
+	}
+	return (1);
+}
+
 int main(int ac, char **av)
 {
 	t_lst *a;
@@ -334,15 +380,24 @@ int main(int ac, char **av)
 	av[2] = "2";
 	av[3] = "1";
 	av[4] = "3";
-	av[5] = "2147483647";
+	av[5] = "21";
+//	av[1] = "1";
+//	av[2] = "2";
+//	av[3] = "3";
+//	av[4] = "4";
+//	av[5] = "21";
 	ac = 6;
-	init_lst(a, b);
+	init_lst(&a, &b);
 	if (ac >= 2)
 	{
 		if (ac == 2)
 			str_to_list(av[1], &a);
 		else
 			tab_to_list(av, ac, &a);
+		if (check_duplicates(a))
+			freelst(&a, 2);
+		if (is_list_sorted(a))
+			freelst(&a, 0);
 		printlst(&data, a, 'A');
         sort5(&a, &b);
        printlst(&data, a, 'A');
