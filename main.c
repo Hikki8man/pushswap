@@ -5,9 +5,7 @@
 
 void printlst(t_data *data, t_lst *lst, char c)
 {
-	int i;
 	t_lst *tmp;
-	i = 0;
 
     printf("\n");
 	tmp = lst;
@@ -158,6 +156,16 @@ void	str_to_list(char *str, t_lst **l)
 	*l = a;
 }
 
+char	**str_to_tab(char *str)
+{
+	char	**tab;
+	
+	tab = ft_split(str, ' ');
+	if (tab == NULL)
+		exit(1);
+	return (tab);
+}
+
 int	lstsize(t_lst *lst)
 {
 	int	i;
@@ -265,7 +273,7 @@ void push_smallest_to_b(t_lst **a, t_lst **b, int smallest_pos)
 	int i;
 	
 	i = 1;
-	if (smallest_pos <= lstsize(*a) / 2 || (smallest_pos == 3 && lstsize(*a) == 5))
+	if (smallest_pos <= lstsize(*a) / 2 + lstsize(*a) % 2)
 		while (i < smallest_pos)
 		{
 			rotate(a, 'a');
@@ -309,10 +317,10 @@ void freelst(t_lst **a, int err)
 
 void tab_to_list(char **av, int ac, t_lst **a)
 {
-	int	i;
 	int nb;
-
-	i = 1;
+	int	i;
+	
+	i = 0;
 	while (i < ac)
 	{
 		nb = ft_atoi(av[i]);
@@ -343,8 +351,6 @@ int check_duplicates(t_lst *a)
 		l = l->next;
 	}
 	return (0);
-
-
 }
 
 int is_list_sorted(t_lst *a)
@@ -369,41 +375,91 @@ int is_list_sorted(t_lst *a)
 	return (1);
 }
 
+int tab_len(char **t)
+{
+	int	i;
+	
+	i = 0;
+	while (t[i])
+		i++;
+	return (i);
+}
+
+static void free_tab(char **t)
+{
+	int	i;
+	
+	i = 0;
+	while (t[i])
+	{
+		free(t[i]);
+		i++;
+	}
+	free(t);
+}
+
+void insert_sort(t_lst **a, t_lst **b)
+{
+	int	i;
+	int	size;
+	
+	i = -1;
+	size = lstsize(*a);
+	while (++i < size)
+		push_smallest_to_b(a, b, find_smallest(a));
+	i = -1;
+	size = lstsize(*b);
+	while (++i < size)
+		push(b, a, 'a');
+}
+
 int main(int ac, char **av)
 {
 	t_lst *a;
 	t_lst *b;
-
 	t_data data;
-
-	av[1] = "4";
-	av[2] = "2";
-	av[3] = "1";
-	av[4] = "3";
-	av[5] = "21";
-//	av[1] = "1";
+	char	**tab;
+	
+//	av[1] = "4";
 //	av[2] = "2";
-//	av[3] = "3";
-//	av[4] = "4";
-//	av[5] = "21";
-	ac = 6;
+//	av[3] = "5";
+//	av[4] = "3";
+//	av[5] = "6";
+//	av[1] = "4 2 5 3 6 1";
+//	av[6] = "1";
+//	av[7] = "117";
+//	av[8] = "55";
+//	av[9] = "77";
+//	av[10] = "88";
+//	ac = 2;
 	init_lst(&a, &b);
-	if (ac >= 2)
+	av++;
+	ac--;
+	if (ac >= 1)
 	{
-		if (ac == 2)
-			str_to_list(av[1], &a);
+		if (ac == 1)
+		{
+			tab = str_to_tab(av[0]);
+			tab_to_list(tab, tab_len(tab), &a);
+			free_tab(tab);
+			ac = tab_len(tab) + 1;
+		}
 		else
 			tab_to_list(av, ac, &a);
 		if (check_duplicates(a))
 			freelst(&a, 2);
 		if (is_list_sorted(a))
 			freelst(&a, 0);
-		printlst(&data, a, 'A');
-        sort5(&a, &b);
-       printlst(&data, a, 'A');
+//		printlst(&data, a, 'A');
+		if (ac == 3)
+			sort3(&a);
+		if (ac == 5)
+        	sort5(&a, &b);
+		else
+			insert_sort(&a, &b);
+//       printlst(&data, a, 'A');
 //        printlst(&data, b, 'B');
-
+		freelst(&a, 0);
 	}
-	printf("argumeeeeeent");
 	return (1);
 }
