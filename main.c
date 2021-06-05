@@ -273,6 +273,30 @@ int find_smallest(t_lst **a)
     return (j);
 }
 
+int find_biggest(t_lst **a)
+{
+	t_lst   *l;
+	int     i;
+	int     j;
+	int     tmp;
+
+	i = 1;
+	j = 1;
+	l = *a;
+	tmp = l->nb;
+	while (l)
+	{
+		if (l->nb > tmp)
+		{
+			tmp = l->nb;
+			j = i;
+		}
+		l = l->next;
+		i++;
+	}
+	return (tmp);
+}
+
 void push_smallest_to_b(t_lst **a, t_lst **b, int smallest_pos)
 {
 	int i;
@@ -515,41 +539,35 @@ void insert_sort(t_lst **a, t_lst **b)
 		push(b, a, 'a');
 }
 
-void find_shortest_way_and_rotate(t_lst **a, t_lst **b, int index, char c)
-{
-	int	i;
-	int	size;
-	
-	i = 0;
-	size = lstsize(*a);
-	if (index <= size / 2 + size % 2)
-		while (i < index)
-		{
-			rotate(a, c);
-			i++;
-		}
-	else
-	{
-		while (index < size)
-		{
-			rev_rotate(a, c);
-			index++;
-		}
-	}
-}
-
 int index_elem(t_lst *l, int pos)
 {
 	int i;
-	
+
 	i = 0;
 	while (pos != l->pos)
 	{
 		i++;
 		l = l->next;
 	}
-	
 	return (i);
+}
+
+
+void find_shortest_way_and_rotate(t_lst **a, t_lst **b, int pos, char c)
+{
+	int	size;
+	int index;
+
+	size = lstsize(*a);
+	index = index_elem(*a, pos);
+	if (index <= size / 2 + size % 2)
+		while ((*a)->pos != pos)
+			rotate(a, c);
+	else
+	{
+		while ((*a)->pos != pos)
+			rev_rotate(a, c);
+	}
 }
 
 char 	compare_nb_moves(t_lst **a, int first, int sec)
@@ -619,16 +637,22 @@ void insert_sort_chunk(t_lst **a, t_lst **b)
 		else
 		{
 			if (compare_nb_moves(a, hold_first, hold_second) == 'f')
-				find_shortest_way_and_rotate(a, b, index_elem(*a, hold_first), 'a');
+				find_shortest_way_and_rotate(a, b, hold_first, 'a');
 			else
-				find_shortest_way_and_rotate(a, b, index_elem(*a, hold_second), 'a');
+				find_shortest_way_and_rotate(a, b, hold_second, 'a');
 			push(a, b, 'b');
-			if ((*b)->next && (*b)->pos < (*b)->next->pos)
-				rotate(b, 'b');
+//			if ((*b)->next && (*b)->pos < (*b)->next->pos)
+//				rotate(b, 'b');
 		}
 	}
-//	while (*b)
-//		push(b, a, 'a');
+
+	while (*b)
+	{
+		int big = find_biggest(b);
+		while ((*b)->pos != big) // why ??
+			find_shortest_way_and_rotate(b, a, big, 'b');
+		push(b, a, 'a');
+	}
 }
 
 int main(int ac, char **av)
@@ -643,9 +667,9 @@ int main(int ac, char **av)
 //	av[3] = "1";
 //	av[4] = "3";
 //	av[5] = "6";
-//	av[1] = "2 4 5 -2 3 6 1 0";
-	av[1] = "3645 7701 8 5099 5869 6486 7214 3969 1236 6649 3718 2158 8349 444 1450 1924 3392 2220 2908 4619 3210 3539 9854 5078 2725 418 2500 2740 9412 3983 1913 4078 5282 6517 3587 5580 5488 8876 6775 3141 5938 7295 3349 8880 9222 1183 1597 4639 3230 3419 2189 6320 2288 7778 1332 2626 3567 5259 2236 2271 5142 346 241 8271 9266 3343 3183 6590 9524 4611 9133 9402 4681 3454 2279 6823 5770 4677 2695 3167 6991 2387 955 4429 1564 1043 1278 4116 6085 9356 5961 2374 7324 3775 2080 5555 12 2826 1108 5450";
-//	av[6] = "1";
+//	av[1] = "44 2 4 5 -2 3 6 1 0";
+//	av[1] = "3645 7701 8 5099 5869 6486 7214 3969 1236 6649 3718 2158 8349 444 1450 1924 3392 2220 2908 4619 3210 3539 9854 5078 2725 418 2500 2740 9412 3983 1913 4078 5282 6517 3587 5580 5488 8876 6775 3141 5938 7295 3349 8880 9222 1183 1597 4639 3230 3419 2189 6320 2288 7778 1332 2626 3567 5259 2236 2271 5142 346 241 8271 9266 3343 3183 6590 9524 4611 9133 9402 4681 3454 2279 6823 5770 4677 2695 3167 6991 2387 955 4429 1564 1043 1278 4116 6085 9356 5961 2374 7324 3775 2080 5555 12 2826 1108 5450";
+	av[1] = "50 79 8 75 61 51 16 46 26 37 23 38 19 81 12 89 72 92 39 63 11 74 87 31 85 99 1 53 35 64 48 59 56 10 43 70 52 65 42 76 62 60 83 86 3 21 45 82 27 54 18 95 15 71 25 88 84 2 9 34 13 78 41 58 33 28 96 97 0 55 98 32 30 6 7 67 44 90 29 91 94 57 5 77 20 93 22 49 40 36 24 4 47 69 14 80 17 73 66 68";
 //	av[7] = "117";
 //	av[8] = "55";
 //	av[9] = "77";
@@ -676,8 +700,21 @@ int main(int ac, char **av)
         	sort5(&a, &b);
 		else
 			insert_sort_chunk(&a, &b);
+//set_pos(&a);
+//		while (a)
+//		{
+//			int big = find_biggest(&a);
+//			int l = 0;
+//			while (a->pos != big)
+//			{
+//		find_shortest_way_and_rotate(b, a, find_biggest(b), 'b');
+//				rotate(&a, 'a');
+//				l++;
+//			}
+//			push(&a, &b, 'a');
+//		}
 //       printlst(&data, a, 'A');
-        printlst(&data, b, 'B');
+//        printlst(&data, b, 'B');
 		exit_err(&a, 0);
 	}
 	return (1);
