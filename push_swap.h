@@ -11,9 +11,16 @@
 typedef struct	s_lst
 {
 	int				nb;
+	int 			pos;
 	struct s_lst	*prev;
 	struct s_lst	*next;
 }t_lst;
+
+typedef struct s_chunk
+{
+	int min;
+	int max;
+}t_chunk;
 
 typedef struct	s_data
 {

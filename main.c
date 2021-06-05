@@ -12,7 +12,7 @@ void printlst(t_data *data, t_lst *lst, char c)
 	printf("List %c\n", c);
 	while (tmp)
 	{
-		printf("nb = %d\n", tmp->nb);
+		printf("nb = %d | pos = %d\n", tmp->nb, tmp->pos);
 		tmp = tmp->next;
 	}
 	printf("\n");
@@ -50,6 +50,7 @@ t_lst *new_elem(int nb)
 	if (elem == NULL)
 		exit (1);
 	elem->nb = nb;
+	elem->pos = -1;
 	elem->prev = NULL;
 	elem->next = NULL;
 	return (elem);
@@ -130,7 +131,11 @@ int str_int_cmp(char *s, int nb)
 	if (!ft_strncmp(s, "2147483648", 10))
 		return (-1);
 	if (nb < 0)
+	{
 		num *= -1;
+		s++;
+		len--;
+	}
 	while (len-- > 0)
 	{
 		mod = num % 10 + 48;
@@ -299,7 +304,7 @@ void sort5(t_lst **a, t_lst **b)
 	push(b, a, 'a');
 }
 
-void freelst(t_lst **a, int err)
+void freelst(t_lst **a)
 {
 	t_lst *tmp;
 	while (*a)
@@ -308,6 +313,11 @@ void freelst(t_lst **a, int err)
 		free(*a);
 		(*a) = tmp;
 	}
+}
+
+void exit_err(t_lst **a, int err)
+{
+	freelst(a);
 	if (err == 1)
 		ft_putstr_fd("Error\nWrong arguments\n", 2);
 	if (err == 2)
@@ -325,7 +335,7 @@ void tab_to_list(char **av, int ac, t_lst **a)
 	{
 		nb = ft_atoi(av[i]);
 		if (str_int_cmp(av[i], nb) == -1)
-			freelst(a, 1);
+			exit_err(a, 1);
 		add_back(a, new_elem(nb));
 		i++;
 	}
@@ -398,6 +408,97 @@ static void free_tab(char **t)
 	free(t);
 }
 
+t_lst 	*lst_cpy(t_lst *a)
+{
+	t_lst *cpy;
+	
+	cpy = NULL;
+	while (a)
+	{
+		add_back(&cpy, new_elem(a->nb));
+		a = a->next;
+	}
+	return (cpy);
+}
+
+void push_to_trash(t_lst **a, t_lst **trash)
+{
+	t_lst *tmp;
+	
+	if (is_empty(a))
+		return;
+	tmp = (*a);
+	(*a) = (*a)->next;
+	if (*a)
+		(*a)->prev = NULL;
+	tmp->next = (*trash);
+	if (*trash)
+		(*trash)->prev = tmp;
+	(*trash) = tmp;
+}
+
+void rotate_silent(t_lst **lst)
+{
+	t_lst *first;
+	t_lst *tmp;
+	
+	first = (*lst)->next;
+	first->prev = NULL;
+	tmp = lstlast(*lst);
+	tmp->next = *lst;
+	(*lst)->prev = tmp;
+	(*lst)->next = NULL;
+	*lst = first;
+}
+
+void set_pos(t_lst **a)
+{
+	int 	size;
+	int		i;
+	int 	j;
+	int 	smol;
+	t_lst 	*cpy;
+	t_lst	*pt_a;
+	t_lst	*trash;
+	
+	i = -1;
+	trash = NULL;
+	cpy = lst_cpy(*a);
+	size = lstsize(*a);
+	while (++i < size)
+	{
+		j = -1;
+		pt_a = (*a);
+		smol = find_smallest(&cpy) - 1;
+		while (++j < smol)
+			rotate_silent(&cpy);
+		while (pt_a->nb != cpy->nb)
+			pt_a = pt_a->next;
+		pt_a->pos = i;
+		push_to_trash(&cpy, &trash);
+	}
+	freelst(&trash);
+}
+
+void set_chunk(t_chunk *chunk, int size, int lstsize)
+{
+	int	i;
+	int min;
+	int max;
+	
+	min = 0;
+	max = (lstsize / 5) - 1;
+	i = -1;
+	while (++i < size)
+	{
+		chunk[i].min = min;
+		chunk[i].max = max;
+		min += lstsize / 5;
+		max += lstsize / 5;
+	}
+	chunk[i - 1].max = lstsize - 1;
+}
+
 void insert_sort(t_lst **a, t_lst **b)
 {
 	int	i;
@@ -405,12 +506,129 @@ void insert_sort(t_lst **a, t_lst **b)
 	
 	i = -1;
 	size = lstsize(*a);
+	set_pos(a);
 	while (++i < size)
 		push_smallest_to_b(a, b, find_smallest(a));
 	i = -1;
 	size = lstsize(*b);
 	while (++i < size)
 		push(b, a, 'a');
+}
+
+void find_shortest_way_and_rotate(t_lst **a, t_lst **b, int index, char c)
+{
+	int	i;
+	int	size;
+	
+	i = 0;
+	size = lstsize(*a);
+	if (index <= size / 2 + size % 2)
+		while (i < index)
+		{
+			rotate(a, c);
+			i++;
+		}
+	else
+	{
+		while (index < size)
+		{
+			rev_rotate(a, c);
+			index++;
+		}
+	}
+}
+
+int index_elem(t_lst *l, int pos)
+{
+	int i;
+	
+	i = 0;
+	while (pos != l->pos)
+	{
+		i++;
+		l = l->next;
+	}
+	
+	return (i);
+}
+
+char 	compare_nb_moves(t_lst **a, int first, int sec)
+{
+	int	index_first;
+	int index_sec;
+	int size;
+	
+	index_first = index_elem(*a, first);
+	index_sec = index_elem(*a, sec);
+	size = lstsize(*a);
+	if (index_first > size / 2)
+		index_first -= size;
+	if (index_sec > size / 2)
+		index_sec = size - index_sec;
+	if (index_first <= index_sec)
+		return ('f');
+	return ('s');
+}
+
+void insert_sort_chunk(t_lst **a, t_lst **b)
+{
+	int	size;
+	int	nb_chunks;
+	t_chunk chunk[5];
+	t_lst *top;
+	t_lst *bottom;
+	int	hold_first;
+	int hold_second;
+	int i;
+	
+	nb_chunks = 5;
+	size = lstsize(*a);
+	set_chunk(chunk, nb_chunks, lstsize(*a));
+	set_pos(a);
+	i = 0;
+//		for (int i = 0; i < 5; i++)
+//		printf("chunk %d : min = %d | max = %d\n", i, chunk[i].min, chunk[i].max);
+	while (i < nb_chunks)
+	{
+		hold_first = -1;
+		hold_second = -1;
+		top = *a;
+		bottom = lstlast(*a);
+		while (top)
+		{
+			if (top->pos >= chunk[i].min && top->pos <= chunk[i].max)
+			{
+				hold_first = top->pos;
+				break;
+			}
+			top = top->next;
+		}
+		while (bottom)
+		{
+			if (hold_first == -1)
+				break;
+			if (bottom->pos >= chunk[i].min && bottom->pos <= chunk[i].max)
+			{
+				hold_second = bottom->pos;
+				break;
+			}
+			bottom = bottom->prev;
+		}
+		if (hold_first == -1)
+			i++;
+		else
+		{
+			if (compare_nb_moves(a, hold_first, hold_second) == 'f')
+				find_shortest_way_and_rotate(a, b, index_elem(*a, hold_first), 'a');
+			else
+				find_shortest_way_and_rotate(a, b, index_elem(*a, hold_second), 'a');
+			push(a, b, 'b');
+			if ((*b)->next && (*b)->pos < (*b)->next->pos)
+				rotate(b, 'b');
+		}
+	}
+//	while (*b)
+//		push(b, a, 'a');
 }
 
 int main(int ac, char **av)
@@ -420,18 +638,19 @@ int main(int ac, char **av)
 	t_data data;
 	char	**tab;
 	
-//	av[1] = "4";
+//	av[1] = "-4";
 //	av[2] = "2";
-//	av[3] = "5";
+//	av[3] = "1";
 //	av[4] = "3";
 //	av[5] = "6";
-//	av[1] = "4 2 5 3 6 1";
+//	av[1] = "2 4 5 -2 3 6 1 0";
+	av[1] = "3645 7701 8 5099 5869 6486 7214 3969 1236 6649 3718 2158 8349 444 1450 1924 3392 2220 2908 4619 3210 3539 9854 5078 2725 418 2500 2740 9412 3983 1913 4078 5282 6517 3587 5580 5488 8876 6775 3141 5938 7295 3349 8880 9222 1183 1597 4639 3230 3419 2189 6320 2288 7778 1332 2626 3567 5259 2236 2271 5142 346 241 8271 9266 3343 3183 6590 9524 4611 9133 9402 4681 3454 2279 6823 5770 4677 2695 3167 6991 2387 955 4429 1564 1043 1278 4116 6085 9356 5961 2374 7324 3775 2080 5555 12 2826 1108 5450";
 //	av[6] = "1";
 //	av[7] = "117";
 //	av[8] = "55";
 //	av[9] = "77";
 //	av[10] = "88";
-//	ac = 2;
+	ac = 2;
 	init_lst(&a, &b);
 	av++;
 	ac--;
@@ -447,19 +666,19 @@ int main(int ac, char **av)
 		else
 			tab_to_list(av, ac, &a);
 		if (check_duplicates(a))
-			freelst(&a, 2);
+			exit_err(&a, 2);
 		if (is_list_sorted(a))
-			freelst(&a, 0);
+			exit_err(&a, 0);
 //		printlst(&data, a, 'A');
 		if (ac == 3)
 			sort3(&a);
-		if (ac == 5)
+		else if (ac == 5)
         	sort5(&a, &b);
 		else
-			insert_sort(&a, &b);
+			insert_sort_chunk(&a, &b);
 //       printlst(&data, a, 'A');
-//        printlst(&data, b, 'B');
-		freelst(&a, 0);
+        printlst(&data, b, 'B');
+		exit_err(&a, 0);
 	}
 	return (1);
 }
