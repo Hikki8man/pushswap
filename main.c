@@ -78,12 +78,16 @@ static void add_front(t_lst **lst, t_lst *elem)
 void swap(t_lst *lst, char c)
 {
 	int tmp;
+	int	tmp2;
 
 	if (lst->next != NULL || lst == NULL)
 	{
 		tmp = lst->next->nb;
+		tmp2 = lst->next->pos;
 		lst->next->nb = lst->nb;
+		lst->next->pos = lst->pos;
 		lst->nb = tmp;
+		lst->pos = tmp2;
 	}
 	printf("s%c\n", c);
 }
@@ -283,12 +287,12 @@ int find_biggest(t_lst **a)
 	i = 1;
 	j = 1;
 	l = *a;
-	tmp = l->nb;
+	tmp = l->pos;
 	while (l)
 	{
-		if (l->nb > tmp)
+		if (l->pos > tmp)
 		{
-			tmp = l->nb;
+			tmp = l->pos;
 			j = i;
 		}
 		l = l->next;
@@ -511,14 +515,14 @@ void set_chunk(t_chunk *chunk, int size, int lstsize)
 	int max;
 	
 	min = 0;
-	max = (lstsize / 5) - 1;
+	max = (lstsize / size) - 1;
 	i = -1;
 	while (++i < size)
 	{
 		chunk[i].min = min;
 		chunk[i].max = max;
-		min += lstsize / 5;
-		max += lstsize / 5;
+		min += lstsize / size;
+		max += lstsize / size;
 	}
 	chunk[i - 1].max = lstsize - 1;
 }
@@ -544,6 +548,8 @@ int index_elem(t_lst *l, int pos)
 	int i;
 
 	i = 0;
+	if (is_empty(&l))
+		return (0);
 	while (pos != l->pos)
 	{
 		i++;
@@ -604,7 +610,7 @@ void insert_sort_chunk(t_lst **a, t_lst **b)
 	set_chunk(chunk, nb_chunks, lstsize(*a));
 	set_pos(a);
 	i = 0;
-//		for (int i = 0; i < 5; i++)
+//		for (int i = 0; i < nb_chunks; i++)
 //		printf("chunk %d : min = %d | max = %d\n", i, chunk[i].min, chunk[i].max);
 	while (i < nb_chunks)
 	{
@@ -642,14 +648,14 @@ void insert_sort_chunk(t_lst **a, t_lst **b)
 				find_shortest_way_and_rotate(a, b, hold_second, 'a');
 			push(a, b, 'b');
 //			if ((*b)->next && (*b)->pos < (*b)->next->pos)
-//				rotate(b, 'b');
+//				swap(*b, 'b');
 		}
 	}
 
 	while (*b)
 	{
 		int big = find_biggest(b);
-		while ((*b)->pos != big) // why ??
+//		while ((*b)->pos != big) // why ??
 			find_shortest_way_and_rotate(b, a, big, 'b');
 		push(b, a, 'a');
 	}
@@ -669,12 +675,12 @@ int main(int ac, char **av)
 //	av[5] = "6";
 //	av[1] = "44 2 4 5 -2 3 6 1 0";
 //	av[1] = "3645 7701 8 5099 5869 6486 7214 3969 1236 6649 3718 2158 8349 444 1450 1924 3392 2220 2908 4619 3210 3539 9854 5078 2725 418 2500 2740 9412 3983 1913 4078 5282 6517 3587 5580 5488 8876 6775 3141 5938 7295 3349 8880 9222 1183 1597 4639 3230 3419 2189 6320 2288 7778 1332 2626 3567 5259 2236 2271 5142 346 241 8271 9266 3343 3183 6590 9524 4611 9133 9402 4681 3454 2279 6823 5770 4677 2695 3167 6991 2387 955 4429 1564 1043 1278 4116 6085 9356 5961 2374 7324 3775 2080 5555 12 2826 1108 5450";
-	av[1] = "50 79 8 75 61 51 16 46 26 37 23 38 19 81 12 89 72 92 39 63 11 74 87 31 85 99 1 53 35 64 48 59 56 10 43 70 52 65 42 76 62 60 83 86 3 21 45 82 27 54 18 95 15 71 25 88 84 2 9 34 13 78 41 58 33 28 96 97 0 55 98 32 30 6 7 67 44 90 29 91 94 57 5 77 20 93 22 49 40 36 24 4 47 69 14 80 17 73 66 68";
-//	av[7] = "117";
-//	av[8] = "55";
+//	av[1] = "52 66 44 70 4 83 74 67 71 21 27 75 49 39 35 18 88 24 29 77 63 82 89 31 13 73 33 42 10 97 79 2 59 23 25 3 99 37 80 1 46 58 65 95 22 78 81 34 76 60 9 8 30 15 53 54 14 26 20 86 0 64 55 85 62 6 61 48 28 45 41 92 96 16 38 93 36 47 84 57 7 72 56 40 12 98 69 91 68 87 32 11 19 50 51 5";
+//	av[1] = "70 80 47 26 0 62 14 83 45 10 90 65 76 2 11 40 51 94 27 73 87 82 44 95 58 6 25 5 23 61 32 29 36 28 92 18 15 12 34 55 37 71 56 97 86 67 16 43 3 30 91 7 60 35 50 69 17 85 21 31 41 93 54 74 1 64 33 81 24 72 88 57 38 46 48 53 75 77 42 9 49 79 96 39 20 13 66 22 98 68 52 78 63 89 99 59 8 84 19 4";
+//	av[1] = "-3649 5522 -8314 -3981 -8254 -5169 -6550 -1398 7901 5269 -8554 719 5420 2107 -3087 6704 -4744 9985 8029 -5935 299 3474 -1726 7797 -1232 -1774 3368 1795 -3026 8932 4314 5511 5589 5149 7063 220 6227 980 2755 -9513 3123 -9070 6762 -7053 -8215 2912 1811 -6749 842 2062 -1964 840 -1617 -2470 5206 -8138 -3287 4897 8460 -3039 -7032 4499 -4255 -4559 -9006 -7405 3160 -6526 -3853 -2231 -3174 2854 2469 -2289 9621 -695 858 -3807 8021 9285 2852 -2405 2830 7633 6032 -5801 -4150 -4522 -8671 -8211 8293 -683 7650 -179 -8686 4434 7874 162 882 -9504";
 //	av[9] = "77";
 //	av[10] = "88";
-	ac = 2;
+//	ac = 2;
 	init_lst(&a, &b);
 	av++;
 	ac--;
@@ -693,6 +699,7 @@ int main(int ac, char **av)
 			exit_err(&a, 2);
 		if (is_list_sorted(a))
 			exit_err(&a, 0);
+//		set_pos(&a);
 //		printlst(&data, a, 'A');
 		if (ac == 3)
 			sort3(&a);
@@ -700,22 +707,9 @@ int main(int ac, char **av)
         	sort5(&a, &b);
 		else
 			insert_sort_chunk(&a, &b);
-//set_pos(&a);
-//		while (a)
-//		{
-//			int big = find_biggest(&a);
-//			int l = 0;
-//			while (a->pos != big)
-//			{
-//		find_shortest_way_and_rotate(b, a, find_biggest(b), 'b');
-//				rotate(&a, 'a');
-//				l++;
-//			}
-//			push(&a, &b, 'a');
-//		}
 //       printlst(&data, a, 'A');
 //        printlst(&data, b, 'B');
-		exit_err(&a, 0);
+//		exit_err(&a, 0);
 	}
-	return (1);
+	return (0);
 }
