@@ -18,6 +18,28 @@ void printlst(t_data *data, t_lst *lst, char c)
 	printf("\n");
 }
 
+int is_empty(t_lst **lst)
+{
+	if (!*lst)
+		return (1);
+	return (0);
+}
+
+int index_elem(t_lst *l, int pos)
+{
+	int i;
+	
+	i = 0;
+	if (is_empty(&l))
+		return (0);
+	while (pos != l->pos)
+	{
+		i++;
+		l = l->next;
+	}
+	return (i);
+}
+
 int	skip_space(char *s)
 {
 	int	i;
@@ -26,13 +48,6 @@ int	skip_space(char *s)
 	while (s[i] == ' ')
 		i++;
 	return (i);
-}
-
-int is_empty(t_lst **lst)
-{
-	if (!*lst)
-		return (1);
-	return (0);
 }
 
 static t_lst	*lstlast(t_lst *lst)
@@ -75,6 +90,7 @@ static void add_front(t_lst **lst, t_lst *elem)
 	elem->next = *lst;
 	*lst = elem;
 }
+
 void swap(t_lst *lst, char c)
 {
 	int tmp;
@@ -256,57 +272,43 @@ void    sort3(t_lst **a)
 int find_smallest(t_lst **a)
 {
     t_lst   *l;
-    int     i;
-    int     j;
     int     tmp;
-
-    i = 1;
-    j = 1;
+    
     l = *a;
-    tmp = l->nb;
+    tmp = l->pos;
     while (l)
     {
-        if (l->nb < tmp)
-        {
-            tmp = l->nb;
-            j = i;
-        }
+        if (l->pos < tmp)
+            tmp = l->pos;
         l = l->next;
-        i++;
     }
-    return (j);
+    return (tmp);
 }
 
 int find_biggest(t_lst **a)
 {
 	t_lst   *l;
-	int     i;
-	int     j;
 	int     tmp;
-
-	i = 1;
-	j = 1;
+	
 	l = *a;
 	tmp = l->pos;
 	while (l)
 	{
 		if (l->pos > tmp)
-		{
 			tmp = l->pos;
-			j = i;
-		}
 		l = l->next;
-		i++;
 	}
 	return (tmp);
 }
 
 void push_smallest_to_b(t_lst **a, t_lst **b, int smallest_pos)
 {
-	int i;
+	int	i;
+	int	size;
 	
-	i = 1;
-	if (smallest_pos <= lstsize(*a) / 2 + lstsize(*a) % 2)
+	i = 0;
+	size = lstsize(*a);
+	if (smallest_pos <= size / 2 + size % 2)
 		while (i < smallest_pos)
 		{
 			rotate(a, 'a');
@@ -314,7 +316,7 @@ void push_smallest_to_b(t_lst **a, t_lst **b, int smallest_pos)
 		}
 	else
 	{
-		while (smallest_pos <= lstsize(*a))
+		while (smallest_pos < size)
 		{
 			rev_rotate(a, 'a');
 			smallest_pos++;
@@ -325,8 +327,8 @@ void push_smallest_to_b(t_lst **a, t_lst **b, int smallest_pos)
 
 void sort5(t_lst **a, t_lst **b)
 {
-    push_smallest_to_b(a, b, find_smallest(a));
-	push_smallest_to_b(a, b, find_smallest(a));
+    push_smallest_to_b(a, b, index_elem(*a, find_smallest(a)));
+	push_smallest_to_b(a, b, index_elem(*a, find_smallest(a)));
 	sort3(a);
 	push(b, a, 'a');
 	push(b, a, 'a');
@@ -479,6 +481,30 @@ void rotate_silent(t_lst **lst)
 	*lst = first;
 }
 
+int find_smallest_nb(t_lst **a)
+{
+	t_lst   *l;
+	int     i;
+	int     j;
+	int     tmp;
+	
+	i = 1;
+	j = 1;
+	l = *a;
+	tmp = l->nb;
+	while (l)
+	{
+		if (l->nb < tmp)
+		{
+			tmp = l->nb;
+			j = i;
+		}
+		l = l->next;
+		i++;
+	}
+	return (j);
+}
+
 void set_pos(t_lst **a)
 {
 	int 	size;
@@ -497,7 +523,7 @@ void set_pos(t_lst **a)
 	{
 		j = -1;
 		pt_a = (*a);
-		smol = find_smallest(&cpy) - 1;
+		smol = find_smallest_nb(&cpy) - 1;
 		while (++j < smol)
 			rotate_silent(&cpy);
 		while (pt_a->nb != cpy->nb)
@@ -542,22 +568,6 @@ void insert_sort(t_lst **a, t_lst **b)
 	while (++i < size)
 		push(b, a, 'a');
 }
-
-int index_elem(t_lst *l, int pos)
-{
-	int i;
-
-	i = 0;
-	if (is_empty(&l))
-		return (0);
-	while (pos != l->pos)
-	{
-		i++;
-		l = l->next;
-	}
-	return (i);
-}
-
 
 void find_shortest_way_and_rotate(t_lst **a, t_lst **b, int pos, char c)
 {
@@ -646,17 +656,23 @@ void insert_sort_chunk(t_lst **a, t_lst **b)
 				find_shortest_way_and_rotate(a, b, hold_first, 'a');
 			else
 				find_shortest_way_and_rotate(a, b, hold_second, 'a');
+			if ((*b) && (*b)->next && (*b)->pos < (*b)->next->pos)
+			{
+				if ((*a)->pos < find_smallest(b))
+				{
+					while ((*b)->pos != find_smallest((b)))
+					{
+						find_shortest_way_and_rotate(b, a, find_smallest(b), 'b');
+					}
+				}
+			}
 			push(a, b, 'b');
-//			if ((*b)->next && (*b)->pos < (*b)->next->pos)
-//				swap(*b, 'b');
 		}
 	}
 
 	while (*b)
 	{
-		int big = find_biggest(b);
-//		while ((*b)->pos != big) // why ??
-			find_shortest_way_and_rotate(b, a, big, 'b');
+		find_shortest_way_and_rotate(b, a, find_biggest(b), 'b');
 		push(b, a, 'a');
 	}
 }
@@ -669,7 +685,7 @@ int main(int ac, char **av)
 	char	**tab;
 	
 //	av[1] = "-4";
-//	av[2] = "2";
+//	av[1] = "4 5 2 3 1";
 //	av[3] = "1";
 //	av[4] = "3";
 //	av[5] = "6";
@@ -691,7 +707,7 @@ int main(int ac, char **av)
 			tab = str_to_tab(av[0]);
 			tab_to_list(tab, tab_len(tab), &a);
 			free_tab(tab);
-			ac = tab_len(tab) + 1;
+			ac = tab_len(tab);
 		}
 		else
 			tab_to_list(av, ac, &a);
@@ -699,8 +715,9 @@ int main(int ac, char **av)
 			exit_err(&a, 2);
 		if (is_list_sorted(a))
 			exit_err(&a, 0);
-//		set_pos(&a);
+		set_pos(&a);
 //		printlst(&data, a, 'A');
+//		printf("%d\n", ac);
 		if (ac == 3)
 			sort3(&a);
 		else if (ac == 5)
