@@ -60,5 +60,5 @@ add_executable(pushswap
         libft/ft_ullitoa_base.c
         libft/get_next_line.c
         libft/libft.h
-        main.c
-        push_swap.h)
+        srcs/main.c
+        include/push_swap.h)

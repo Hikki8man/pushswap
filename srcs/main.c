@@ -1,7 +1,7 @@
 //
 // Created by Johan Chevet on 5/28/21.
 //
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void printlst(t_data *data, t_lst *lst, char c)
 {
@@ -50,80 +50,10 @@ int	skip_space(char *s)
 	return (i);
 }
 
-static t_lst	*lstlast(t_lst *lst)
-{
-	while (lst && lst->next)
-		lst = lst->next;
-	return (lst);
-}
 
-t_lst *new_elem(int nb)
-{
-	t_lst *elem;
 
-	elem = malloc(sizeof(t_lst));
-	if (elem == NULL)
-		exit (1);
-	elem->nb = nb;
-	elem->pos = -1;
-	elem->prev = NULL;
-	elem->next = NULL;
-	return (elem);
-}
 
-static void	add_back(t_lst **lst, t_lst *new)
-{
-	t_lst	*tmp;
 
-	if (!*lst)
-		*lst = new;
-	else
-	{
-		tmp = lstlast(*lst);
-		new->prev = tmp;
-		tmp->next = new;
-	}
-}
-
-static void add_front(t_lst **lst, t_lst *elem)
-{
-	elem->next = *lst;
-	*lst = elem;
-}
-
-void swap(t_lst *lst, char c)
-{
-	int tmp;
-	int	tmp2;
-
-	if (lst->next != NULL || lst == NULL)
-	{
-		tmp = lst->next->nb;
-		tmp2 = lst->next->pos;
-		lst->next->nb = lst->nb;
-		lst->next->pos = lst->pos;
-		lst->nb = tmp;
-		lst->pos = tmp2;
-	}
-	printf("s%c\n", c);
-}
-
-void push(t_lst **a, t_lst **b, char c)
-{
-	t_lst *tmp;
-
-	if (is_empty(a))
-		return;
-	tmp = (*a);
-	(*a) = (*a)->next;
-	if (*a)
-		(*a)->prev = NULL;
-	tmp->next = (*b);
-	if (*b)
-       (*b)->prev = tmp;
-    (*b) = tmp;
-    printf("p%c\n", c);
-}
 
 
 int intlen(int nb)
@@ -136,7 +66,6 @@ int intlen(int nb)
 		nb /= 10;
 		i++;
 	}
-	printf("ok\n");
 	return (i);
 }
 
@@ -191,18 +120,7 @@ char	**str_to_tab(char *str)
 	return (tab);
 }
 
-int	lstsize(t_lst *lst)
-{
-	int	i;
 
-	i = 0;
-	while (lst)
-	{
-		i++;
-		lst = lst->next;
-	}
-	return (i);
-}
 
 static void	init_lst(t_lst **a, t_lst **b)
 {
@@ -210,44 +128,9 @@ static void	init_lst(t_lst **a, t_lst **b)
 	*b = NULL;
 }
 
-void rotate(t_lst **lst, char c)
-{
-	t_lst *first;
-	t_lst *tmp;
 
-	first = (*lst)->next;
-	first->prev = NULL;
-	tmp = lstlast(*lst);
-	tmp->next = *lst;
-    (*lst)->prev = tmp;
-	(*lst)->next = NULL;
-	*lst = first;
-	printf("r%c\n", c);
-}
 
-void rev_rotate(t_lst **lst, char c)
-{
-	t_lst	*last;
-	t_lst	*tmp;
-	int size;
-	int	i;
 
-	i = 0;
-	size = lstsize(*lst);
-	last = lstlast(*lst);
-	last->prev = NULL;
-	last->next = *lst;
-    (*lst)->prev = last;
-	tmp = *lst;
-	while (i < size - 2)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	tmp->next = NULL;
-	*lst = last;
-	printf("rr%c\n", c);
-}
 
 void    sort3(t_lst **a)
 {
@@ -366,7 +249,7 @@ void tab_to_list(char **av, int ac, t_lst **a)
 		nb = ft_atoi(av[i]);
 		if (str_int_cmp(av[i], nb) == -1)
 			exit_err(a, 1);
-		add_back(a, new_elem(nb));
+		add_back(a, new_elem(nb)); //TODO add front ?
 		i++;
 	}
 }
@@ -604,18 +487,16 @@ char 	compare_nb_moves(t_lst **a, int first, int sec)
 	return ('s');
 }
 
-void insert_sort_chunk(t_lst **a, t_lst **b)
+void insert_sort_chunk(t_lst **a, t_lst **b, int nb_chunks)
 {
 	int	size;
-	int	nb_chunks;
-	t_chunk chunk[5];
+	t_chunk chunk[nb_chunks];
 	t_lst *top;
 	t_lst *bottom;
 	int	hold_first;
 	int hold_second;
 	int i;
 	
-	nb_chunks = 5;
 	size = lstsize(*a);
 	set_chunk(chunk, nb_chunks, lstsize(*a));
 	set_pos(a);
@@ -656,16 +537,6 @@ void insert_sort_chunk(t_lst **a, t_lst **b)
 				find_shortest_way_and_rotate(a, b, hold_first, 'a');
 			else
 				find_shortest_way_and_rotate(a, b, hold_second, 'a');
-			if ((*b) && (*b)->next && (*b)->pos < (*b)->next->pos)
-			{
-				if ((*a)->pos < find_smallest(b))
-				{
-					while ((*b)->pos != find_smallest((b)))
-					{
-						find_shortest_way_and_rotate(b, a, find_smallest(b), 'b');
-					}
-				}
-			}
 			push(a, b, 'b');
 		}
 	}
@@ -685,7 +556,7 @@ int main(int ac, char **av)
 	char	**tab;
 	
 //	av[1] = "-4";
-//	av[1] = "4 5 2 3 1";
+	av[1] = "4 5 2 3 1";
 //	av[3] = "1";
 //	av[4] = "3";
 //	av[5] = "6";
@@ -696,7 +567,7 @@ int main(int ac, char **av)
 //	av[1] = "-3649 5522 -8314 -3981 -8254 -5169 -6550 -1398 7901 5269 -8554 719 5420 2107 -3087 6704 -4744 9985 8029 -5935 299 3474 -1726 7797 -1232 -1774 3368 1795 -3026 8932 4314 5511 5589 5149 7063 220 6227 980 2755 -9513 3123 -9070 6762 -7053 -8215 2912 1811 -6749 842 2062 -1964 840 -1617 -2470 5206 -8138 -3287 4897 8460 -3039 -7032 4499 -4255 -4559 -9006 -7405 3160 -6526 -3853 -2231 -3174 2854 2469 -2289 9621 -695 858 -3807 8021 9285 2852 -2405 2830 7633 6032 -5801 -4150 -4522 -8671 -8211 8293 -683 7650 -179 -8686 4434 7874 162 882 -9504";
 //	av[9] = "77";
 //	av[10] = "88";
-//	ac = 2;
+	ac = 2;
 	init_lst(&a, &b);
 	av++;
 	ac--;
@@ -716,14 +587,15 @@ int main(int ac, char **av)
 		if (is_list_sorted(a))
 			exit_err(&a, 0);
 		set_pos(&a);
-//		printlst(&data, a, 'A');
-//		printf("%d\n", ac);
+		printlst(&data, a, 'A');
 		if (ac == 3)
 			sort3(&a);
 		else if (ac == 5)
         	sort5(&a, &b);
+		else if (ac <= 200)
+			insert_sort_chunk(&a, &b, 5);
 		else
-			insert_sort_chunk(&a, &b);
+			insert_sort_chunk(&a, &b, 11);
 //       printlst(&data, a, 'A');
 //        printlst(&data, b, 'B');
 //		exit_err(&a, 0);
