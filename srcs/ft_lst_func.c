@@ -32,10 +32,17 @@ void	add_back(t_lst **lst, t_lst *new)
 	}
 }
 
-void	add_front(t_lst **lst, t_lst *elem)
+t_lst 	*lst_cpy(t_lst *a)
 {
-	elem->next = *lst;
-	*lst = elem;
+	t_lst	*cpy;
+
+	cpy = NULL;
+	while (a)
+	{
+		add_back(&cpy, new_elem(a->nb));
+		a = a->next;
+	}
+	return (cpy);
 }
 
 t_lst	*lstlast(t_lst *lst)

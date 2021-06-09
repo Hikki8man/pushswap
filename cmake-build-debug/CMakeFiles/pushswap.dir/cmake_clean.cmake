@@ -51,7 +51,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/pushswap.dir/libft/ft_u_itoa_base.c.o"
   "CMakeFiles/pushswap.dir/libft/ft_ullitoa_base.c.o"
   "CMakeFiles/pushswap.dir/libft/get_next_line.c.o"
-  "CMakeFiles/pushswap.dir/main.c.o"
+  "CMakeFiles/pushswap.dir/srcs/ft_basic_action.c.o"
+  "CMakeFiles/pushswap.dir/srcs/ft_lst_func.c.o"
+  "CMakeFiles/pushswap.dir/srcs/ft_parsing.c.o"
+  "CMakeFiles/pushswap.dir/srcs/ft_parsing2.c.o"
+  "CMakeFiles/pushswap.dir/srcs/ft_set_pos.c.o"
+  "CMakeFiles/pushswap.dir/srcs/main.c.o"
   "pushswap"
   "pushswap.pdb"
 )

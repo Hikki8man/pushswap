@@ -61,4 +61,9 @@ add_executable(pushswap
         libft/get_next_line.c
         libft/libft.h
         srcs/main.c
+        srcs/ft_lst_func.c
+        srcs/ft_parsing.c
+        srcs/ft_parsing2.c
+        srcs/ft_set_pos.c
+        srcs/ft_basic_action.c
         include/push_swap.h)

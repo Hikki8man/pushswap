@@ -7,4 +7,7 @@
 
 #include "push_swap.h"
 
+//silent basic action
+void	rotate_silent(t_lst **lst);
+
 #endif //PUSHSWAP_CHECKER_H
