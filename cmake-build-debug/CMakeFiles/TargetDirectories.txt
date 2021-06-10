@@ -1,3 +1,3 @@
-/mnt/c/Users/Stellar/CLionProjects/pushswap/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/Stellar/CLionProjects/pushswap/cmake-build-debug/CMakeFiles/edit_cache.dir
-/mnt/c/Users/Stellar/CLionProjects/pushswap/cmake-build-debug/CMakeFiles/pushswap.dir
+/Users/jchevet/mygit/push_swap/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/jchevet/mygit/push_swap/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/jchevet/mygit/push_swap/cmake-build-debug/CMakeFiles/pushswap.dir

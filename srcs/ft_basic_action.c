@@ -4,12 +4,12 @@
 
 #include "../include/push_swap.h"
 
-void	swap(t_lst *lst, char c)
+void	swap(t_lst *lst, char c, int silent)
 {
 	int	tmp;
 	int	tmp2;
 
-	if (lst->next != NULL || lst == NULL)
+	if (lst != NULL && lst->next != NULL)
 	{
 		tmp = lst->next->nb;
 		tmp2 = lst->next->pos;
@@ -17,50 +17,58 @@ void	swap(t_lst *lst, char c)
 		lst->next->pos = lst->pos;
 		lst->nb = tmp;
 		lst->pos = tmp2;
+		if (silent == 0)
+			printf("s%c\n", c);
 	}
-	printf("s%c\n", c);
 }
 
-void	rotate(t_lst **lst, char c)
+void	rotate(t_lst **lst, char c, int silent)
 {
 	t_lst	*first;
 	t_lst	*tmp;
 
-	first = (*lst)->next;
-	first->prev = NULL;
-	tmp = lstlast(*lst);
-	tmp->next = *lst;
-	(*lst)->prev = tmp;
-	(*lst)->next = NULL;
-	*lst = first;
-	printf("r%c\n", c);
+	if (*lst != NULL && (*lst)->next != NULL)
+	{
+		first = (*lst)->next;
+		first->prev = NULL;
+		tmp = lstlast(*lst);
+		tmp->next = *lst;
+		(*lst)->prev = tmp;
+		(*lst)->next = NULL;
+		*lst = first;
+		if (silent == 0)
+			printf("r%c\n", c);
+	}
 }
 
-void	rev_rotate(t_lst **lst, char c)
+void	rev_rotate(t_lst **lst, char c, int silent)
 {
 	t_lst	*last;
 	t_lst	*tmp;
 	int		size;
 	int		i;
 
-	i = 0;
-	size = lstsize(*lst);
-	last = lstlast(*lst);
-	last->prev = NULL;
-	last->next = *lst;
-	(*lst)->prev = last;
-	tmp = *lst;
-	while (i < size - 2)
+	if (*lst != NULL && (*lst)->next != NULL)
 	{
-		tmp = tmp->next;
-		i++;
+		i = 0;
+		size = lstsize(*lst);
+		last = lstlast(*lst);
+		last->prev = NULL;
+		last->next = *lst;
+		(*lst)->prev = last;
+		tmp = *lst;
+		while (i < size - 2) {
+			tmp = tmp->next;
+			i++;
+		}
+		tmp->next = NULL;
+		*lst = last;
+		if (silent == 0)
+			printf("rr%c\n", c);
 	}
-	tmp->next = NULL;
-	*lst = last;
-	printf("rr%c\n", c);
 }
 
-void	push(t_lst **a, t_lst **b, char c)
+void	push(t_lst **a, t_lst **b, char c, int silent)
 {
 	t_lst	*tmp;
 
@@ -74,5 +82,6 @@ void	push(t_lst **a, t_lst **b, char c)
 	if (*b)
 		(*b)->prev = tmp;
 	(*b) = tmp;
-	printf("p%c\n", c);
+	if (silent == 0)
+		printf("p%c\n", c);
 }

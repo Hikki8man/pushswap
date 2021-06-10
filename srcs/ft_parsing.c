@@ -4,11 +4,10 @@
 
 #include "../include/push_swap.h"
 
-
-static int check_duplicates(t_lst *a)
+static int	check_duplicates(t_lst *a)
 {
 	int		tmp;
-	t_lst 	*l;
+	t_lst	*l;
 
 	l = a;
 	while (l)
@@ -27,7 +26,7 @@ static int check_duplicates(t_lst *a)
 	return (0);
 }
 
-static void free_tab(char **t)
+static void	free_tab(char **t)
 {
 	int	i;
 
@@ -40,7 +39,7 @@ static void free_tab(char **t)
 	free(t);
 }
 
-static int tab_len(char **t)
+static int	tab_len(char **t)
 {
 	int	i;
 
@@ -50,9 +49,9 @@ static int tab_len(char **t)
 	return (i);
 }
 
-static void tab_to_list(char **av, int ac, t_lst **a)
+static void	tab_to_list(char **av, int ac, t_lst **a)
 {
-	int nb;
+	int	nb;
 	int	i;
 
 	i = 0;
@@ -60,13 +59,13 @@ static void tab_to_list(char **av, int ac, t_lst **a)
 	{
 		nb = ft_atoi(av[i]);
 		if (str_int_cmp(av[i], nb) == -1)
-			exit_err(a, 1);
+			exit_err(a, NULL);
 		add_back(a, new_elem(nb));
 		i++;
 	}
 }
 
-void parsing(int *ac, char **av, t_lst **a, t_lst **b)
+void	parsing(int *ac, char **av, t_lst **a, t_lst **b)
 {
 	char	**tab;
 
@@ -85,9 +84,9 @@ void parsing(int *ac, char **av, t_lst **a, t_lst **b)
 		else
 			tab_to_list(av, *ac, a);
 		if (check_duplicates(*a))
-			exit_err(a, 2);
-		if (is_list_sorted(*a))
-			exit_err(a, 0);
+			exit_err(a, b);
 		set_pos(a);
 	}
+	else
+		exit (0);
 }

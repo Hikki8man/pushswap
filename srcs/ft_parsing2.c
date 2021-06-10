@@ -1,5 +1,5 @@
 //
-// Created by Stellar on 09/06/2021.
+// Created by Johan Chevet on 09/06/2021.
 //
 
 #include "../include/push_swap.h"
@@ -10,7 +10,7 @@ void	init_lst(t_lst **a, t_lst **b)
 	*b = NULL;
 }
 
-int str_int_cmp(char *s, int nb)
+int	str_int_cmp(char *s, int nb)
 {
 	int			len;
 	int			mod;

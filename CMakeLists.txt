@@ -66,4 +66,10 @@ add_executable(pushswap
         srcs/ft_parsing2.c
         srcs/ft_set_pos.c
         srcs/ft_basic_action.c
+        srcs/ft_free_exit.c
+        srcs/ft_sort3.c
+        srcs/ft_sort5.c
+        srcs/ft_utils.c
+        srcs/ft_utils2.c
+        srcs/ft_sort_chunk.c
         include/push_swap.h)

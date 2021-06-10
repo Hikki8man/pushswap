@@ -4,44 +4,81 @@
 
 #include "../include/checker.h"
 
-int main(int ac, char **av)
+static void	ss(t_lst **a, t_lst **b)
 {
-	int main(int ac, char **av)
-	{
-		t_lst *a;
-		t_lst *b;
-		char	**tab;
+	swap(*a, 'a', 1);
+	swap(*b, 'b', 1);
+}
 
-		init_lst(&a, &b);
-		av++;
-		ac--;
-		if (ac >= 1)
-		{
-			if (ac == 1)
-			{
-				tab = str_to_tab(av[0]);
-				tab_to_list(tab, tab_len(tab), &a);
-				free_tab(tab);
-				ac = tab_len(tab);
-			}
-			else
-				tab_to_list(av, ac, &a);
-			if (check_duplicates(a))
-				exit_err(&a, 2);
-			if (is_list_sorted(a))
-				exit_err(&a, 0);
-			set_pos(&a);
-//		printlst(&data, a, 'A');
-//		printf("%d\n", ac);
-			if (ac == 3)
-				sort3(&a);
-			else if (ac == 5)
-				sort5(&a, &b);
-			else if (ac <= 200)
-				insert_sort_chunk(&a, &b, 5);
-			else
-				insert_sort_chunk(&a, &b, 11);
-		}
-		return (0);
+static void	read_entry_part_2(t_lst **a, t_lst **b, char **line)
+{
+	if (!ft_strncmp(*line, "pb", ft_strlen(*line)))
+		push(a, b, 'b', 1);
+	else if (!ft_strncmp(*line, "ra", ft_strlen(*line)))
+		rotate(a, 'a', 1);
+	else if (!ft_strncmp(*line, "rb", ft_strlen(*line)))
+		rotate(b, 'b', 1);
+	else if (!ft_strncmp(*line, "rr", ft_strlen(*line)))
+	{
+		rotate(a, 'a', 1);
+		rotate(b, 'b', 1);
 	}
+	else if (!ft_strncmp(*line, "rra", ft_strlen(*line)))
+		rev_rotate(a, 'a', 1);
+	else if (!ft_strncmp(*line, "rrb", ft_strlen(*line)))
+		rev_rotate(b, 'b', 1);
+	else if (!ft_strncmp(*line, "rrr", ft_strlen(*line)))
+	{
+		rev_rotate(a, 'a', 1);
+		rev_rotate(b, 'b', 1);
+	}
+	else
+	{
+		free(*line);
+		exit_err(a, b);
+	}
+}
+
+static void	read_entry(t_lst **a, t_lst **b)
+{
+	char	*line;
+	int		ret;
+
+	line = NULL;
+	while (1)
+	{
+		ret = get_next_line(0, &line);
+		if (ret == -1 || (!*line && ret == 1))
+			exit_err(a, b);
+		if (ret == 0)
+			break ;
+		if (!ft_strncmp(line, "sa", ft_strlen(line)))
+			swap(*a, 'a', 1);
+		else if (!ft_strncmp(line, "sb", ft_strlen(line)))
+			swap(*b, 'b', 1);
+		else if (!ft_strncmp(line, "ss", ft_strlen(line)))
+			ss(a, b);
+		else if (!ft_strncmp(line, "pa", ft_strlen(line)))
+			push(b, a, 'a', 1);
+		else
+			read_entry_part_2(a, b, &line);
+		free(line);
+	}
+	free(line);
+}
+
+int	main(int ac, char **av)
+{
+	t_lst	*a;
+	t_lst	*b;
+
+	parsing(&ac, av, &a, &b);
+	read_entry(&a, &b);
+	if (is_list_sorted(a) == 1)
+		ft_putstr("OK");
+	else
+		ft_putstr("KO");
+	freelst(&a);
+	freelst(&b);
+	return (0);
 }

@@ -10,7 +10,7 @@ static void	push_to_trash(t_lst **a, t_lst **trash)
 	t_lst	*tmp;
 
 	if (is_empty(a))
-		return;
+		return ;
 	tmp = (*a);
 	(*a) = (*a)->next;
 	if (*a)
@@ -21,10 +21,10 @@ static void	push_to_trash(t_lst **a, t_lst **trash)
 	(*trash) = tmp;
 }
 
-static int find_smallest_nb(t_lst **a)
+static int	find_smallest_nb(t_lst **a)
 {
-	t_lst   *l;
-	int     tmp;
+	t_lst	*l;
+	int		tmp;
 
 	l = *a;
 	tmp = l->nb;
@@ -37,29 +37,26 @@ static int find_smallest_nb(t_lst **a)
 	return (tmp);
 }
 
-void set_pos(t_lst **a)
+void	set_pos(t_lst **a)
 {
-	int 	size;
 	int		i;
-	int 	smol;
-	t_lst 	*cpy;
+	t_lst	*cpy;
 	t_lst	*pt_a;
 	t_lst	*trash;
 
-	i = -1;
+	i = 0;
 	trash = NULL;
 	cpy = lst_cpy(*a);
-	size = lstsize(*a);
-	while (++i < size)
+	while (cpy)
 	{
 		pt_a = (*a);
-		smol = find_smallest_nb(&cpy);
 		while (cpy->nb != find_smallest_nb(&cpy))
-			rotate_silent(&cpy);
+			rotate(&cpy, 'c', 1);
 		while (pt_a->nb != cpy->nb)
 			pt_a = pt_a->next;
 		pt_a->pos = i;
 		push_to_trash(&cpy, &trash);
+		i++;
 	}
 	freelst(&trash);
 }

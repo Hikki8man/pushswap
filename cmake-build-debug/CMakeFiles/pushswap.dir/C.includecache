@@ -6,17 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/mnt/c/Users/Stellar/CLionProjects/pushswap/include/checker.h
-push_swap.h
-/mnt/c/Users/Stellar/CLionProjects/pushswap/include/push_swap.h
-
-/mnt/c/Users/Stellar/CLionProjects/pushswap/include/push_swap.h
+/Users/jchevet/mygit/push_swap/include/push_swap.h
 ../libft/libft.h
-/mnt/c/Users/Stellar/CLionProjects/pushswap/libft/libft.h
+/Users/jchevet/mygit/push_swap/libft/libft.h
 stdio.h
 -
 
-/mnt/c/Users/Stellar/CLionProjects/pushswap/libft/libft.h
+/Users/jchevet/mygit/push_swap/libft/libft.h
 stdlib.h
 -
 unistd.h
@@ -24,9 +20,7 @@ unistd.h
 fcntl.h
 -
 
-/mnt/c/Users/Stellar/CLionProjects/pushswap/srcs/ft_set_pos.c
+/Users/jchevet/mygit/push_swap/srcs/main.c
 ../include/push_swap.h
-/mnt/c/Users/Stellar/CLionProjects/pushswap/include/push_swap.h
-../include/checker.h
-/mnt/c/Users/Stellar/CLionProjects/pushswap/include/checker.h
+/Users/jchevet/mygit/push_swap/include/push_swap.h
 
