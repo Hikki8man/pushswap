@@ -171,7 +171,6 @@ CMakeFiles/pushswap.dir/srcs/ft_parsing2.c.o: ../include/push_swap.h
 CMakeFiles/pushswap.dir/srcs/ft_parsing2.c.o: ../libft/libft.h
 CMakeFiles/pushswap.dir/srcs/ft_parsing2.c.o: ../srcs/ft_parsing2.c
 
-CMakeFiles/pushswap.dir/srcs/ft_set_pos.c.o: ../include/checker.h
 CMakeFiles/pushswap.dir/srcs/ft_set_pos.c.o: ../include/push_swap.h
 CMakeFiles/pushswap.dir/srcs/ft_set_pos.c.o: ../libft/libft.h
 CMakeFiles/pushswap.dir/srcs/ft_set_pos.c.o: ../srcs/ft_set_pos.c

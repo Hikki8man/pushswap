@@ -20,7 +20,7 @@ unistd.h
 fcntl.h
 -
 
-/Users/jchevet/mygit/push_swap/srcs/main.c
+/Users/jchevet/mygit/push_swap/srcs/ft_free_exit.c
 ../include/push_swap.h
 /Users/jchevet/mygit/push_swap/include/push_swap.h
 

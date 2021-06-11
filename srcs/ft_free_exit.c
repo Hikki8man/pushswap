@@ -8,11 +8,13 @@ void	freelst(t_lst **a)
 {
 	t_lst	*tmp;
 
-	while (*a)
+	if (a)
 	{
-		tmp = (*a)->next;
-		free(*a);
-		(*a) = tmp;
+		while (*a) {
+			tmp = (*a)->next;
+			free(*a);
+			(*a) = tmp;
+		}
 	}
 }
 
