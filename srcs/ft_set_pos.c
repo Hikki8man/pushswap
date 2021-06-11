@@ -3,7 +3,6 @@
 //
 
 #include "../include/push_swap.h"
-#include "../include/checker.h"
 
 static void	push_to_trash(t_lst **a, t_lst **trash)
 {

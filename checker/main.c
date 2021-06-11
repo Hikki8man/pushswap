@@ -2,7 +2,7 @@
 // Created by Johan Chevet on 6/9/21.
 //
 
-#include "../include/checker.h"
+#include "../include/push_swap.h"
 
 static void	ss(t_lst **a, t_lst **b)
 {
@@ -75,9 +75,9 @@ int	main(int ac, char **av)
 	parsing(&ac, av, &a, &b);
 	read_entry(&a, &b);
 	if (is_list_sorted(a) == 1)
-		ft_putstr("OK");
+		ft_putstr("OK\n");
 	else
-		ft_putstr("KO");
+		ft_putstr("KO\n");
 	freelst(&a);
 	freelst(&b);
 	return (0);
