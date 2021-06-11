@@ -26,15 +26,20 @@ ${NAME} : ${OBJ}
 			${CC} -o ${NAME} ${OBJ} libft/libft.a
 
 checker :
+			make -C mychecker/
+			cp mychecker/checker ./
 
 clean :
 			make clean -C libft/
+			make clean -C mychecker/
 			rm -f ${OBJ}
 
 fclean :  clean
 			make fclean -C libft/
+			make fclean -C mychecker/
+			rm -f checker
 			rm -f ${NAME}
 
 re :    fclean ${NAME}
 
-.PHONY : re clean fclean libft .c.o
+.PHONY : re clean fclean libft .c.o checker

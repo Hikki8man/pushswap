@@ -6,12 +6,8 @@ SRCF =  ft_basic_action.c \
         ft_parsing2.c \
         ft_set_pos.c \
         ft_utils.c \
-        ft_utils2.c \
-        ft_sort3.c \
-        ft_sort5.c \
-        ../checker/main.c \
-        ft_sort_chunk.c
-SRCS = $(addprefix ../srcs/, ${SRCF})
+        ft_utils2.c
+SRCS = $(addprefix ../srcs/, ${SRCF}) main.c
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 OBJ = ${SRCS:.c=.o}
@@ -24,7 +20,6 @@ all :   ${NAME}
 ${NAME} : ${OBJ}
 			make -C ../libft/
 			${CC} -o ${NAME} ${OBJ} ../libft/libft.a
-			mv ${NAME} ..
 
 clean :
 			make clean -C ../libft/

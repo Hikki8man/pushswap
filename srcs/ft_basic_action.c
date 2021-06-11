@@ -57,7 +57,8 @@ void	rev_rotate(t_lst **lst, char c, int silent)
 		last->next = *lst;
 		(*lst)->prev = last;
 		tmp = *lst;
-		while (i < size - 2) {
+		while (i < size - 2)
+		{
 			tmp = tmp->next;
 			i++;
 		}

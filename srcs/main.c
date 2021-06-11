@@ -3,11 +3,11 @@
 //
 #include "../include/push_swap.h"
 
-void printlst(t_lst *lst, char c)
+void	printlst(t_lst *lst, char c)
 {
-	t_lst *tmp;
+	t_lst	*tmp;
 
-    printf("\n");
+	printf("\n");
 	tmp = lst;
 	printf("List %c\n", c);
 	while (tmp)
@@ -18,7 +18,7 @@ void printlst(t_lst *lst, char c)
 	printf("\n");
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_lst	*a;
 	t_lst	*b;
