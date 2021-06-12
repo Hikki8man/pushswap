@@ -25,10 +25,6 @@ int	main(int ac, char **av)
 	int		silent;
 
 	silent = 0;
-	av[1] = "asd";
-	av[2] = "dasd";
-	av[3] = "d123";
-	ac = 4;
 	parsing(&ac, av, &a, &b);
 	if (!is_list_sorted(a))
 	{

@@ -18,15 +18,6 @@ void	freelst(t_lst **a)
 	}
 }
 
-//void 	free_chunk(t_chunk *chunk, int size)
-//{
-//	int i;
-//
-//	i = -1;
-//	while (++i < size)
-//		free(chunk + i);
-//}
-
 void	exit_err(t_lst **a, t_lst **b)
 {
 	freelst(a);
