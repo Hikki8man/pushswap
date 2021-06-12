@@ -7,15 +7,15 @@ void	printlst(t_lst *lst, char c)
 {
 	t_lst	*tmp;
 
-	printf("\n");
+	ft_printf("\n");
 	tmp = lst;
-	printf("List %c\n", c);
+	ft_printf("List %c\n", c);
 	while (tmp)
 	{
-		printf("nb = %d | pos = %d\n", tmp->nb, tmp->pos);
+		ft_printf("nb = %d | pos = %d\n", tmp->nb, tmp->pos);
 		tmp = tmp->next;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 int	main(int ac, char **av)

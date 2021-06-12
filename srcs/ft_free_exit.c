@@ -10,7 +10,8 @@ void	freelst(t_lst **a)
 
 	if (a)
 	{
-		while (*a) {
+		while (*a)
+		{
 			tmp = (*a)->next;
 			free(*a);
 			(*a) = tmp;

@@ -18,7 +18,7 @@ void	swap(t_lst *lst, char c, int silent)
 		lst->nb = tmp;
 		lst->pos = tmp2;
 		if (silent == 0)
-			printf("s%c\n", c);
+			ft_printf("s%c\n", c);
 	}
 }
 
@@ -37,7 +37,7 @@ void	rotate(t_lst **lst, char c, int silent)
 		(*lst)->next = NULL;
 		*lst = first;
 		if (silent == 0)
-			printf("r%c\n", c);
+			ft_printf("r%c\n", c);
 	}
 }
 
@@ -65,7 +65,7 @@ void	rev_rotate(t_lst **lst, char c, int silent)
 		tmp->next = NULL;
 		*lst = last;
 		if (silent == 0)
-			printf("rr%c\n", c);
+			ft_printf("rr%c\n", c);
 	}
 }
 
@@ -84,5 +84,5 @@ void	push(t_lst **a, t_lst **b, char c, int silent)
 		(*b)->prev = tmp;
 	(*b) = tmp;
 	if (silent == 0)
-		printf("p%c\n", c);
+		ft_printf("p%c\n", c);
 }
