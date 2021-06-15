@@ -163,6 +163,30 @@
 		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_memset.c">
 			<Option target="pushswap"/>
 		</Unit>
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_printf/ft_flags.c">
+			<Option target="pushswap"/>
+		</Unit>
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_printf/ft_get_prec_width.c">
+			<Option target="pushswap"/>
+		</Unit>
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_printf/ft_print_c_str.c">
+			<Option target="pushswap"/>
+		</Unit>
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_printf/ft_print_int.c">
+			<Option target="pushswap"/>
+		</Unit>
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_printf/ft_print_p_u_x.c">
+			<Option target="pushswap"/>
+		</Unit>
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_printf/ft_print_percent.c">
+			<Option target="pushswap"/>
+		</Unit>
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_printf/ft_printf.c">
+			<Option target="pushswap"/>
+		</Unit>
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_printf/ft_put_field_and_prec.c">
+			<Option target="pushswap"/>
+		</Unit>
 		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_putchar.c">
 			<Option target="pushswap"/>
 		</Unit>
@@ -223,6 +247,9 @@
 		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_substr.c">
 			<Option target="pushswap"/>
 		</Unit>
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_swap.c">
+			<Option target="pushswap"/>
+		</Unit>
 		<Unit filename="/Users/jchevet/mygit/push_swap/libft/ft_tolower.c">
 			<Option target="pushswap"/>
 		</Unit>
@@ -241,7 +268,7 @@
 		<Unit filename="/Users/jchevet/mygit/push_swap/libft/get_next_line.c">
 			<Option target="pushswap"/>
 		</Unit>
-		<Unit filename="/Users/jchevet/mygit/push_swap/libft/libft.h">
+		<Unit filename="/Users/jchevet/mygit/push_swap/libft/include/libft.h">
 			<Option target="pushswap"/>
 		</Unit>
 		<Unit filename="/Users/jchevet/mygit/push_swap/srcs/ft_basic_action.c">

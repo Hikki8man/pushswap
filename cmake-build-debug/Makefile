@@ -845,6 +845,222 @@ libft/ft_memset.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_memset.c.s
 .PHONY : libft/ft_memset.c.s
 
+libft/ft_printf/ft_flags.o: libft/ft_printf/ft_flags.c.o
+
+.PHONY : libft/ft_printf/ft_flags.o
+
+# target to build an object file
+libft/ft_printf/ft_flags.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_flags.c.o
+.PHONY : libft/ft_printf/ft_flags.c.o
+
+libft/ft_printf/ft_flags.i: libft/ft_printf/ft_flags.c.i
+
+.PHONY : libft/ft_printf/ft_flags.i
+
+# target to preprocess a source file
+libft/ft_printf/ft_flags.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_flags.c.i
+.PHONY : libft/ft_printf/ft_flags.c.i
+
+libft/ft_printf/ft_flags.s: libft/ft_printf/ft_flags.c.s
+
+.PHONY : libft/ft_printf/ft_flags.s
+
+# target to generate assembly for a file
+libft/ft_printf/ft_flags.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_flags.c.s
+.PHONY : libft/ft_printf/ft_flags.c.s
+
+libft/ft_printf/ft_get_prec_width.o: libft/ft_printf/ft_get_prec_width.c.o
+
+.PHONY : libft/ft_printf/ft_get_prec_width.o
+
+# target to build an object file
+libft/ft_printf/ft_get_prec_width.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_get_prec_width.c.o
+.PHONY : libft/ft_printf/ft_get_prec_width.c.o
+
+libft/ft_printf/ft_get_prec_width.i: libft/ft_printf/ft_get_prec_width.c.i
+
+.PHONY : libft/ft_printf/ft_get_prec_width.i
+
+# target to preprocess a source file
+libft/ft_printf/ft_get_prec_width.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_get_prec_width.c.i
+.PHONY : libft/ft_printf/ft_get_prec_width.c.i
+
+libft/ft_printf/ft_get_prec_width.s: libft/ft_printf/ft_get_prec_width.c.s
+
+.PHONY : libft/ft_printf/ft_get_prec_width.s
+
+# target to generate assembly for a file
+libft/ft_printf/ft_get_prec_width.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_get_prec_width.c.s
+.PHONY : libft/ft_printf/ft_get_prec_width.c.s
+
+libft/ft_printf/ft_print_c_str.o: libft/ft_printf/ft_print_c_str.c.o
+
+.PHONY : libft/ft_printf/ft_print_c_str.o
+
+# target to build an object file
+libft/ft_printf/ft_print_c_str.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_c_str.c.o
+.PHONY : libft/ft_printf/ft_print_c_str.c.o
+
+libft/ft_printf/ft_print_c_str.i: libft/ft_printf/ft_print_c_str.c.i
+
+.PHONY : libft/ft_printf/ft_print_c_str.i
+
+# target to preprocess a source file
+libft/ft_printf/ft_print_c_str.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_c_str.c.i
+.PHONY : libft/ft_printf/ft_print_c_str.c.i
+
+libft/ft_printf/ft_print_c_str.s: libft/ft_printf/ft_print_c_str.c.s
+
+.PHONY : libft/ft_printf/ft_print_c_str.s
+
+# target to generate assembly for a file
+libft/ft_printf/ft_print_c_str.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_c_str.c.s
+.PHONY : libft/ft_printf/ft_print_c_str.c.s
+
+libft/ft_printf/ft_print_int.o: libft/ft_printf/ft_print_int.c.o
+
+.PHONY : libft/ft_printf/ft_print_int.o
+
+# target to build an object file
+libft/ft_printf/ft_print_int.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_int.c.o
+.PHONY : libft/ft_printf/ft_print_int.c.o
+
+libft/ft_printf/ft_print_int.i: libft/ft_printf/ft_print_int.c.i
+
+.PHONY : libft/ft_printf/ft_print_int.i
+
+# target to preprocess a source file
+libft/ft_printf/ft_print_int.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_int.c.i
+.PHONY : libft/ft_printf/ft_print_int.c.i
+
+libft/ft_printf/ft_print_int.s: libft/ft_printf/ft_print_int.c.s
+
+.PHONY : libft/ft_printf/ft_print_int.s
+
+# target to generate assembly for a file
+libft/ft_printf/ft_print_int.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_int.c.s
+.PHONY : libft/ft_printf/ft_print_int.c.s
+
+libft/ft_printf/ft_print_p_u_x.o: libft/ft_printf/ft_print_p_u_x.c.o
+
+.PHONY : libft/ft_printf/ft_print_p_u_x.o
+
+# target to build an object file
+libft/ft_printf/ft_print_p_u_x.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_p_u_x.c.o
+.PHONY : libft/ft_printf/ft_print_p_u_x.c.o
+
+libft/ft_printf/ft_print_p_u_x.i: libft/ft_printf/ft_print_p_u_x.c.i
+
+.PHONY : libft/ft_printf/ft_print_p_u_x.i
+
+# target to preprocess a source file
+libft/ft_printf/ft_print_p_u_x.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_p_u_x.c.i
+.PHONY : libft/ft_printf/ft_print_p_u_x.c.i
+
+libft/ft_printf/ft_print_p_u_x.s: libft/ft_printf/ft_print_p_u_x.c.s
+
+.PHONY : libft/ft_printf/ft_print_p_u_x.s
+
+# target to generate assembly for a file
+libft/ft_printf/ft_print_p_u_x.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_p_u_x.c.s
+.PHONY : libft/ft_printf/ft_print_p_u_x.c.s
+
+libft/ft_printf/ft_print_percent.o: libft/ft_printf/ft_print_percent.c.o
+
+.PHONY : libft/ft_printf/ft_print_percent.o
+
+# target to build an object file
+libft/ft_printf/ft_print_percent.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_percent.c.o
+.PHONY : libft/ft_printf/ft_print_percent.c.o
+
+libft/ft_printf/ft_print_percent.i: libft/ft_printf/ft_print_percent.c.i
+
+.PHONY : libft/ft_printf/ft_print_percent.i
+
+# target to preprocess a source file
+libft/ft_printf/ft_print_percent.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_percent.c.i
+.PHONY : libft/ft_printf/ft_print_percent.c.i
+
+libft/ft_printf/ft_print_percent.s: libft/ft_printf/ft_print_percent.c.s
+
+.PHONY : libft/ft_printf/ft_print_percent.s
+
+# target to generate assembly for a file
+libft/ft_printf/ft_print_percent.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_print_percent.c.s
+.PHONY : libft/ft_printf/ft_print_percent.c.s
+
+libft/ft_printf/ft_printf.o: libft/ft_printf/ft_printf.c.o
+
+.PHONY : libft/ft_printf/ft_printf.o
+
+# target to build an object file
+libft/ft_printf/ft_printf.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_printf.c.o
+.PHONY : libft/ft_printf/ft_printf.c.o
+
+libft/ft_printf/ft_printf.i: libft/ft_printf/ft_printf.c.i
+
+.PHONY : libft/ft_printf/ft_printf.i
+
+# target to preprocess a source file
+libft/ft_printf/ft_printf.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_printf.c.i
+.PHONY : libft/ft_printf/ft_printf.c.i
+
+libft/ft_printf/ft_printf.s: libft/ft_printf/ft_printf.c.s
+
+.PHONY : libft/ft_printf/ft_printf.s
+
+# target to generate assembly for a file
+libft/ft_printf/ft_printf.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_printf.c.s
+.PHONY : libft/ft_printf/ft_printf.c.s
+
+libft/ft_printf/ft_put_field_and_prec.o: libft/ft_printf/ft_put_field_and_prec.c.o
+
+.PHONY : libft/ft_printf/ft_put_field_and_prec.o
+
+# target to build an object file
+libft/ft_printf/ft_put_field_and_prec.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_put_field_and_prec.c.o
+.PHONY : libft/ft_printf/ft_put_field_and_prec.c.o
+
+libft/ft_printf/ft_put_field_and_prec.i: libft/ft_printf/ft_put_field_and_prec.c.i
+
+.PHONY : libft/ft_printf/ft_put_field_and_prec.i
+
+# target to preprocess a source file
+libft/ft_printf/ft_put_field_and_prec.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_put_field_and_prec.c.i
+.PHONY : libft/ft_printf/ft_put_field_and_prec.c.i
+
+libft/ft_printf/ft_put_field_and_prec.s: libft/ft_printf/ft_put_field_and_prec.c.s
+
+.PHONY : libft/ft_printf/ft_put_field_and_prec.s
+
+# target to generate assembly for a file
+libft/ft_printf/ft_put_field_and_prec.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_printf/ft_put_field_and_prec.c.s
+.PHONY : libft/ft_printf/ft_put_field_and_prec.c.s
+
 libft/ft_putchar.o: libft/ft_putchar.c.o
 
 .PHONY : libft/ft_putchar.o
@@ -1384,6 +1600,33 @@ libft/ft_substr.s: libft/ft_substr.c.s
 libft/ft_substr.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_substr.c.s
 .PHONY : libft/ft_substr.c.s
+
+libft/ft_swap.o: libft/ft_swap.c.o
+
+.PHONY : libft/ft_swap.o
+
+# target to build an object file
+libft/ft_swap.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_swap.c.o
+.PHONY : libft/ft_swap.c.o
+
+libft/ft_swap.i: libft/ft_swap.c.i
+
+.PHONY : libft/ft_swap.i
+
+# target to preprocess a source file
+libft/ft_swap.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_swap.c.i
+.PHONY : libft/ft_swap.c.i
+
+libft/ft_swap.s: libft/ft_swap.c.s
+
+.PHONY : libft/ft_swap.s
+
+# target to generate assembly for a file
+libft/ft_swap.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pushswap.dir/build.make CMakeFiles/pushswap.dir/libft/ft_swap.c.s
+.PHONY : libft/ft_swap.c.s
 
 libft/ft_tolower.o: libft/ft_tolower.c.o
 
@@ -1958,6 +2201,30 @@ help:
 	@echo "... libft/ft_memset.o"
 	@echo "... libft/ft_memset.i"
 	@echo "... libft/ft_memset.s"
+	@echo "... libft/ft_printf/ft_flags.o"
+	@echo "... libft/ft_printf/ft_flags.i"
+	@echo "... libft/ft_printf/ft_flags.s"
+	@echo "... libft/ft_printf/ft_get_prec_width.o"
+	@echo "... libft/ft_printf/ft_get_prec_width.i"
+	@echo "... libft/ft_printf/ft_get_prec_width.s"
+	@echo "... libft/ft_printf/ft_print_c_str.o"
+	@echo "... libft/ft_printf/ft_print_c_str.i"
+	@echo "... libft/ft_printf/ft_print_c_str.s"
+	@echo "... libft/ft_printf/ft_print_int.o"
+	@echo "... libft/ft_printf/ft_print_int.i"
+	@echo "... libft/ft_printf/ft_print_int.s"
+	@echo "... libft/ft_printf/ft_print_p_u_x.o"
+	@echo "... libft/ft_printf/ft_print_p_u_x.i"
+	@echo "... libft/ft_printf/ft_print_p_u_x.s"
+	@echo "... libft/ft_printf/ft_print_percent.o"
+	@echo "... libft/ft_printf/ft_print_percent.i"
+	@echo "... libft/ft_printf/ft_print_percent.s"
+	@echo "... libft/ft_printf/ft_printf.o"
+	@echo "... libft/ft_printf/ft_printf.i"
+	@echo "... libft/ft_printf/ft_printf.s"
+	@echo "... libft/ft_printf/ft_put_field_and_prec.o"
+	@echo "... libft/ft_printf/ft_put_field_and_prec.i"
+	@echo "... libft/ft_printf/ft_put_field_and_prec.s"
 	@echo "... libft/ft_putchar.o"
 	@echo "... libft/ft_putchar.i"
 	@echo "... libft/ft_putchar.s"
@@ -2018,6 +2285,9 @@ help:
 	@echo "... libft/ft_substr.o"
 	@echo "... libft/ft_substr.i"
 	@echo "... libft/ft_substr.s"
+	@echo "... libft/ft_swap.o"
+	@echo "... libft/ft_swap.i"
+	@echo "... libft/ft_swap.s"
 	@echo "... libft/ft_tolower.o"
 	@echo "... libft/ft_tolower.i"
 	@echo "... libft/ft_tolower.s"

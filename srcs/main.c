@@ -22,17 +22,10 @@ void	sort500(t_lst **a, t_lst **b, t_info *info)
 {
 	sort_chunk(a, b, 4, info);
 	ft_swap(&info->fst, &info->sec);
-//	printlst(*a, 'a');
-//	printlst(*b, 'b');
 	sort_chunk(b, a, 8, info);
-//	printlst(*a, 'a');
-//	printlst(*b, 'b');
 	ft_swap(&info->fst, &info->sec);
-	sort_chunk(a, b, 11, info);
-//	printlst(*a, 'a');
-//	printlst(*b, 'b');
-	push_list(b, a, info);
-
+	sort_chunk(a, b, 16, info);
+	push_list(a, b, info);
 }
 
 int	main(int ac, char **av)
@@ -40,9 +33,7 @@ int	main(int ac, char **av)
 	t_lst	*a;
 	t_lst	*b;
 	t_info	info;
-	int		silent;
 
-	silent = 0;
 	info.silent = 0;
 	info.fst = 'a';
 	info.sec = 'b';
@@ -50,18 +41,17 @@ int	main(int ac, char **av)
 	if (!is_list_sorted(a))
 	{
 		if (ac == 3)
-			sort3(&a, silent);
+			sort3(&a, info.silent);
 		else if (ac == 5)
-			sort5(&a, &b, silent);
-		else if (ac <= 200) {
+			sort5(&a, &b, info.silent);
+		else if (ac <= 200)
+		{
 			sort_chunk(&a, &b, 5, &info);
-			push_list(&b, &a, &info);
+			push_list(&a, &b, &info);
 		}
-		else {
+		else
 			sort500(&a, &b, &info);
-		}
 	}
-//	printlst(a, 'a');
 	freelst(&a);
 	return (0);
 }

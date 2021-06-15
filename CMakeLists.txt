@@ -55,11 +55,20 @@ add_executable(pushswap
         libft/ft_substr.c
         libft/ft_tolower.c
         libft/ft_toupper.c
+        libft/ft_printf/ft_printf.c
+        libft/ft_printf/ft_flags.c
+        libft/ft_printf/ft_get_prec_width.c
+        libft/ft_printf/ft_print_c_str.c
+        libft/ft_printf/ft_print_int.c
+        libft/ft_printf/ft_print_p_u_x.c
+        libft/ft_printf/ft_print_percent.c
+        libft/ft_printf/ft_put_field_and_prec.c
+        libft/ft_swap.c
         libft/ft_u_itoa.c
         libft/ft_u_itoa_base.c
         libft/ft_ullitoa_base.c
         libft/get_next_line.c
-        libft/libft.h
+        libft/include/libft.h
         srcs/main.c
         srcs/ft_lst_func.c
         srcs/ft_parsing.c

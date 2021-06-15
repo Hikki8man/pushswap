@@ -28,10 +28,11 @@ static int	return_last_in_chunk(t_lst *bottom, t_chunk chunk)
 
 void	push_list(t_lst **a, t_lst **b, t_info *info)
 {
-	while (*a)
+	while (*b)
 	{
-		find_shortest_way_and_rotate(a, find_biggest(a), info->fst, info->silent);
-		push(a, b, info->sec, info->silent);
+		find_shortest_way_and_rotate(b, find_biggest(b), info->sec, \
+							   info->silent);
+		push(b, a, info->fst, info->silent);
 	}
 }
 
@@ -56,7 +57,8 @@ void	sort_chunk(t_lst **a, t_lst **b, int nb_chunks, t_info *info)
 			if (compare_nb_moves(a, first, second) == 'f')
 				find_shortest_way_and_rotate(a, first, info->fst, info->silent);
 			else
-				find_shortest_way_and_rotate(a, second, info->fst, info->silent);
+				find_shortest_way_and_rotate(a, second, info->fst \
+				, info->silent);
 			push(a, b, info->sec, info->silent);
 		}
 	}
