@@ -26,16 +26,16 @@ static int	return_last_in_chunk(t_lst *bottom, t_chunk chunk)
 	return (-1);
 }
 
-static void	push_b_to_a(t_lst **a, t_lst **b, int silent)
+void	push_list(t_lst **a, t_lst **b, t_info *info)
 {
-	while (*b)
+	while (*a)
 	{
-		find_shortest_way_and_rotate(b, find_biggest(b), 'b', silent);
-		push(b, a, 'a', silent);
+		find_shortest_way_and_rotate(a, find_biggest(a), info->fst, info->silent);
+		push(a, b, info->sec, info->silent);
 	}
 }
 
-void	sort_chunk(t_lst **a, t_lst **b, int nb_chunks, int silent)
+void	sort_chunk(t_lst **a, t_lst **b, int nb_chunks, t_info *info)
 {
 	t_chunk	*chunk;
 	int		first;
@@ -54,12 +54,11 @@ void	sort_chunk(t_lst **a, t_lst **b, int nb_chunks, int silent)
 		else
 		{
 			if (compare_nb_moves(a, first, second) == 'f')
-				find_shortest_way_and_rotate(a, first, 'a', silent);
+				find_shortest_way_and_rotate(a, first, info->fst, info->silent);
 			else
-				find_shortest_way_and_rotate(a, second, 'a', silent);
-			push(a, b, 'b', silent);
+				find_shortest_way_and_rotate(a, second, info->fst, info->silent);
+			push(a, b, info->sec, info->silent);
 		}
 	}
-	push_b_to_a(a, b, silent);
 	free(chunk);
 }

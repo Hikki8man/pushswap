@@ -16,6 +16,13 @@ typedef struct s_lst
 	struct s_lst	*next;
 }t_lst;
 
+typedef struct s_info
+{
+	int		silent;
+	char	fst;
+	char	sec;
+}t_info;
+
 typedef struct s_chunk
 {
 	int	min;
@@ -47,12 +54,13 @@ void		exit_err(t_lst **a, t_lst **b);
 //sort
 void		sort3(t_lst **a, int silent);
 void		sort5(t_lst **a, t_lst **b, int silent);
-void		sort_chunk(t_lst **a, t_lst **b, int nb_chunks, int silent);
+void		sort_chunk(t_lst **a, t_lst **b, int nb_chunks, t_info *info);
 
 //utils
 void		init_lst(t_lst **a, t_lst **b);
 void		set_pos(t_lst **a);
 int			is_list_sorted(t_lst *a);
+void		push_list(t_lst **a, t_lst **b, t_info *info);
 t_chunk		*set_chunk(t_chunk *chunk, int size, int lstsize);
 char		compare_nb_moves(t_lst **a, int first, int sec);
 int			index_elem(t_lst *l, int pos);
